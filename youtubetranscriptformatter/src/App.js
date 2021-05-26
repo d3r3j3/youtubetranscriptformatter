@@ -2,8 +2,9 @@ import './App.css';
 import {NavBar, Formatter, Parser, Header} from './layouts';
 
 function App() {
+
   return (
-    <div className="App grid grid-row flex items-center justify-center">
+    <div className="App w-full grid grid-row flex items-center justify-center">
       <NavBar/>
       <Header name="Formatter"/>
       <Formatter/>
