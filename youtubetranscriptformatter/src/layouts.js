@@ -20,9 +20,9 @@ export const FormattedScript = (props) => {
     return(
         <div>
             <Header name="Formatted Script"/>
-            <form>
-                <textarea className="shadow-2xl focus:outline-none focus:ring-2 focus:ring-green-300" rows="10" cols="80" value={formattedStr}></textarea>
-            </form>
+            
+            <p className="w-100 shadow-2xl focus:outline-none focus:ring-1 focus:ring-green-300 text-left">{formattedStr}</p>
+            
         </div>
     )
 }
@@ -42,7 +42,7 @@ export class Formatter extends Component {
         return(
             <div className="grid grid-row flex items-center justify-center my-3">
                 <form>
-                <textarea className="focus:outline-none focus:ring-2 focus:ring-green-300 shadow-2xl" rows='10' cols='80' onChange={this.handleScript} placeholder="paste transcript"/>
+                <textarea className="w-100 focus:outline-none focus:ring-1 focus:ring-green-300 shadow-2xl" rows='10' onChange={this.handleScript} placeholder="paste transcript"/>
                 <br/>
                 </form>
                 {this.state.script.length > 0 && <FormattedScript script={this.state.script}/>}
