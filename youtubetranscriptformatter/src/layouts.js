@@ -22,10 +22,10 @@ export const FormattedScript = (props) => {
     console.log(formattedStr)
 
     return(
-        <div className="bg-white">
+        <div>
             <Header name="Formatted Script"/>
             
-            <p className="w-100 border-t-2 border-solid border-green-300 shadow-2xl focus:outline-none focus:ring-1 focus:ring-green-300 text-left">{formattedStr}</p>
+            <p className="w-100 bg-white border-t-2 border-solid border-green-300 shadow-2xl focus:outline-none focus:ring-1 focus:ring-green-300 text-left">{formattedStr}</p>
             
         </div>
     )
