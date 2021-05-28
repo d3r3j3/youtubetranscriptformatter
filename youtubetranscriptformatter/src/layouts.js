@@ -13,15 +13,19 @@ export class NavBar extends Component {
 export const FormattedScript = (props) => {
     console.log(props.script)
     var str = props.script
-    var strArray = str.split(/\d\d:\d\d/)
+    var strArray = []
+    if(props.script.length > 0) {
+        strArray = str.split(/\d\d:\d\d\s\s/)
+    }
+    
     var formattedStr = strArray.join(" ")
     console.log(formattedStr)
 
     return(
-        <div>
+        <div className="bg-white">
             <Header name="Formatted Script"/>
             
-            <p className="w-100 shadow-2xl focus:outline-none focus:ring-1 focus:ring-green-300 text-left">{formattedStr}</p>
+            <p className="w-100 border-t-2 border-solid border-green-300 shadow-2xl focus:outline-none focus:ring-1 focus:ring-green-300 text-left">{formattedStr}</p>
             
         </div>
     )
@@ -42,7 +46,7 @@ export class Formatter extends Component {
         return(
             <div className="grid grid-row flex items-center justify-center my-3">
                 <form>
-                <textarea className="w-100 focus:outline-none focus:ring-1 focus:ring-green-300 shadow-2xl" rows='10' onChange={this.handleScript} placeholder="paste transcript"/>
+                <textarea className="w-100 border-t-2 border-solid border-green-300 focus:outline-none focus:ring-1 focus:ring-green-300 shadow-2xl" rows='10' onChange={this.handleScript} placeholder="paste transcript"/>
                 <br/>
                 </form>
                 {this.state.script.length > 0 && <FormattedScript script={this.state.script}/>}
@@ -55,7 +59,7 @@ export class Formatter extends Component {
 export class Parser extends Component {
     render() {
         return(
-            <div className="bg-white shadow-2xl p-2 grid grid-cols-3 gap-3 flex items-center justify-center my-3">
+            <div className="bg-white border-t-2 border-solid border-green-300 shadow-2xl p-2 grid grid-cols-3 gap-3 flex items-center justify-center my-3">
                 <button className="hover:bg-white focus:outline-none font-bold shadow-2xl mt-1 bg-green-300">Scrape</button>
                 <input className="focus:outline-none col-span-2 border-solid border-b-2 border-black" placeholder="url"/>
                 
