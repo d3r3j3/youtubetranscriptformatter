@@ -1,0 +1,27 @@
+const puppeteer = require('puppeteer-extra');
+const pluginStealth = require('puppeteer-extra-plugin-stealth');
+puppeteer.use(pluginStealth());
+
+const puppeteer = require('puppeteer')
+
+async function scrapeAddress(url){
+    const browser = await puppeteer.launch();
+
+    const page = await browser.newPage();
+    await page.goto(url,{waitUntil: 'networkidle0'});
+
+    //wait for xpath
+    await page.waitForXPath('//*[@id="container"]/h1/yt-formatted-string');
+    const [el]= await page.$x('//*[@id="container"]/h1/yt-formatted-string');
+    // console.log(el)
+    const txt = await el.getProperty('textContent');
+    const rawTxt = await txt.jsonValue(); 
+
+    console.log("Hello World");
+    System.print(rawTxt);
+
+    browser.close();
+
+}
+
+scrapeAddress('https://www.whitepages.com/business/CA/San-Diego/Cvs-Health/b-1ahg5bs')
