@@ -1,4 +1,5 @@
-import {NavBar, IntroSec, Tools, OptionBar, Formatter, Parser, Header} from '../layouts';
+import React from 'react';
+import {NavBar, IntroSec, Tools} from '../layouts.js';
 
 function Home() {
 
