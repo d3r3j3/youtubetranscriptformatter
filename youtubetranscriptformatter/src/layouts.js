@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+
+
 export class NavBar extends Component {
     render() {
         return(
@@ -30,6 +32,7 @@ export class IntroSec extends Component {
 
 export class Tools extends Component {
     render() {
+        
         return(
             <div class = "w-full h-full flex items-center">
                 <div class = "w-17.5 h-20 bg-gray left-18.5 top-20 absolute">
