@@ -19,23 +19,10 @@ module.exports = {
     },
 
     colors: {
-<<<<<<< HEAD
-      red: '#ff0000',
-      black: '#000000',
-      navy: '#1a2b6d',
-      gray: '#f2f2f2',
-      white: '#ffffff',
-      green: '#00ff00',
-      djg: '#1c2826',
-      tgreen: '#daefb3',
-      rodyellow: '#eef4d4',
-
-=======
       navy: '#1a2b6d',
       gray: '#f2f2f2',
       red: '#ff0000',
       white: '#ffffff',
->>>>>>> ac608b1cc7f41ac5a98c2d0acd38f587fdd09263
     },
 
     maxHeight: {
@@ -44,12 +31,6 @@ module.exports = {
       '2/5': '40%',
       'full': '100%',
     },
-<<<<<<< HEAD
-
-    
-
-=======
->>>>>>> ac608b1cc7f41ac5a98c2d0acd38f587fdd09263
   },
   variants: {
     extend: {},
