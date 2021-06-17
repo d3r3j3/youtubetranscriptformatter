@@ -1,5 +1,5 @@
 import React from 'react';
-import {NavBar, IntroBar, OptionBar} from '../layouts.js';
+import {NavBar, IntroBar} from '../layouts.js';
 
 function Home() {
 

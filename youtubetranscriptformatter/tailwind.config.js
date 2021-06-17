@@ -15,9 +15,25 @@ module.exports = {
     colors: {
       navy: '#1a2b6d',
       gray: '#f2f2f2',
+      darkgray: '#d9d9d9',
       red: '#d41317',
       white: '#ffffff',
-    },    
+    },
+    
+    zIndex: {
+      '0': 0,
+     '10': 10,
+     '20': 20,
+     '30': 30,
+     '40': 40,
+     '50': 50,
+     '25': 25,
+     '50': 50,
+     '75': 75,
+     '100': 100,
+     '-10': -10,
+      'auto': 'auto',
+    }
   },
 
   variants: {
