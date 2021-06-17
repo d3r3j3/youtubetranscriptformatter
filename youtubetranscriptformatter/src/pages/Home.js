@@ -1,13 +1,12 @@
 import React from 'react';
-import {NavBar, IntroSec, Tools} from '../layouts.js';
+import {NavBar, IntroBar, OptionBar} from '../layouts.js';
 
 function Home() {
 
   return (
-    <div class="w-full max-h-full grid grid-rows-10 flex">
-      <NavBar/>
-      <IntroSec/>      
-      <Tools/>
+    <div class="w-full grid grid-rows flex justify-center items-center">
+      <NavBar/>  
+      <IntroBar/>      
     </div>
   );
 }

@@ -1,63 +1,42 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 
-
 export class NavBar extends Component {
     render() {
         return(
-            <div class = "w-full h-4.5 grid grid-rows-3 md:font-sans">
-                <h1 class = "pl-8 row-start-2">Youtube Transcript <span class = "text-navy">MSTR</span></h1>
-                <Link to="/" class = "no-underline md:hover:underline row-start-2 pl-45">Home</Link>                
-                <Link to="/Formatter" class = "no-underline md:hover:underline row-start-2 pl-2">Formatter</Link>
-                <Link to="/Generator" class = "no-underline md:hover:underline row-start-2 pl-2">Generator</Link>
-                <Link to="/Contact" class = "no-underline md:hover:underline row-start-2 pl-2">Contact</Link>
+            <div class = "grid md:py-6 md:grid-cols-12 font-sans flex">       
+                <h1 class = "md:text-normal md:text-base md:col-start-1 lg:col-end-3 md:col-end-4 text-center">YT Transcript <span class = "text-navy">MSTR</span></h1>
+                <div class = "md:space-x-12 md:text-normal md:text-base md:col-start-5 md:col-end-12 text-right">
+                    <Link to="/" class = "text-red md:hover:underline">Home</Link>                
+                    <Link to="/Formatter" class = "text-navy md:hover:underline">Formatter</Link>
+                    <Link to="/Generator" class = "text-navy md:hover:underline">Generator</Link>
+                    <Link to="/Contact" class = "text-navy md:hover:underline">Contact</Link>
+                </div>
             </div>
         )
     }
 }
 
-export class IntroSec extends Component {
+export class IntroBar extends Component {
     render() {
         return(
-            <div class = "bg-navy text-white w-full h-24 flex justify-center pt-12 pb-32">
-                <div class = 'w-full text-left font-sans pl-18.5'>
-                    <h1 class = "text-5xl font-sans pt-3.5">Our Services</h1>
-                    <p class = "text-base font-sans pt-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam at varius leo. Donec porta erat vel cursus dictum. Nunc ultricies.</p>
-                </div>
-            </div>
             
+            <div class = "bg-navy grid md:grid-cols-12 relative font-sans flex">       
+                <h1 class = "text-white md:col-start-3 md:col-end-13 md:pt-14 md:text-6xl">Our Services</h1>
+                <p class = "text-white md:pb-44 md:col-start-3 md:col-end-11 md:pt-5 md:text-base font-normal md:leading-loose">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In hendrerit elementum lectus, sit amet viverra arcu maximus ac. Proin a dignissim ligula, et pulvinar justo. Aliquam eu varius turpis. Maecenas tempus libero eu mollis condimentum.</p>
+                <OptionBar />
+            </div>
         )
     }
 }
 
-export class Tools extends Component {
-    render() {
-        
-        return(
-            <div class = "w-full h-full flex items-center">
-                <div class = "w-17.5 h-20 bg-gray left-18.5 top-20 absolute">
-                    <div class = "w-17.5 absolute top-3 left-3 h-20 border-4 border-gray"></div>
-                    <h1 class = "text-2xl text-navy font-sans absolute pt-8 pl-8 break-all">Transcript <br/> Formatter</h1>
-                    <p class = "text-base font-thin leading-relaxed font-sans text-navy absolute pl-8 break-all top-28">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    <Link to="/formatter" class = "font-sans text-navy absolute font-bold bottom-5 right-5 float-right w-12 h-12 border-2 border-navy rounded-full flex items-center justify-center">GO</Link>
-                </div>
-
-                <div class = "w-17.5 h-20 bg-gray right-18.5 top-20 absolute"> 
-                    <div class = "w-17.5 absolute top-3 left-3 h-20 border-4 border-gray"></div>
-                    <h1 class = "text-2xl text-navy font-sans absolute pt-8 pl-8 break-all">Not<br/>Sure?</h1>
-                    <p class = "text-base font-thin leading-relaxed font-sans text-navy absolute pl-8 break-all top-28">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    <Link to="/moreinfo" class = "font-sans text-navy absolute font-bold bottom-5 right-5 float-right w-12 h-12 border-2 border-navy rounded-full flex items-center justify-center">GO</Link>
-                </div>
-
-                <div class = "w-17.5 h-20 bg-gray left-39.75 top-20 absolute">
-                    <div class = "w-17.5 absolute top-3 left-3 h-20 border-4 border-gray"></div> 
-                    <h1 class = "text-2xl text-navy font-sans absolute pt-8 pl-8 break-all">Transcript <br/> Generator</h1>
-                    <p class = "text-base font-thin leading-relaxed font-sans text-navy absolute pl-8 break-all top-28">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    <Link to="/generator" class = "font-sans text-navy absolute font-bold bottom-5 right-5 float-right w-12 h-12 border-2 border-navy rounded-full flex items-center justify-center">GO</Link>
-                </div>
-                           
-            </div>
-            
-        )
-    }
+export const OptionBar = () => {
+    return(
+        <div class = "flex items-center justify-center absolute md:top-50">
+            <div class = "bg-red md:w-70 md:h-80">hahaha</div>                    
+                                
+        </div>
+    )
 }
+
+
