@@ -21,10 +21,17 @@ export class IntroBar extends Component {
     render() {
         return(
             
+<<<<<<< HEAD
             <div class="w-full bg-navy flex flex-col justify-center items-center">
             <div class = "w-3/4 font-sans flex flex-col">       
                 <h1 class = "text-white md:pt-14 md:text-6xl">Our Services</h1>
                 <p class = "text-white md:pb-44 md:pt-5 md:text-base font-normal md:leading-loose">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In hendrerit elementum lectus, sit amet viverra arcu maximus ac. Proin a dignissim ligula, et pulvinar justo. Aliquam eu varius turpis.</p>
+=======
+            <div class="w-full bg-navy shadow-2xl flex flex-col justify-center items-center">
+            <div class = "w-3/4 font-sans flex flex-col">       
+                <h1 class = "text-white md:pt-14 md:text-6xl">Our Services</h1>
+                <p class = "text-white md:pb-44 md:pt-5 md:text-base font-normal md:leading-loose">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In hendrerit elementum lectus, sit amet viverra arcu maximus ac. Proin a dignissim ligula, et pulvinar justo. Aliquam eu varius turpis. Maecenas tempus libero eu mollis condimentum.</p>
+>>>>>>> 23f60226b1a409425da186f612fbf0206649300e
                 
             </div>
             <OptionBar />
@@ -35,6 +42,7 @@ export class IntroBar extends Component {
 
 export const OptionBar = () => {
     return(
+<<<<<<< HEAD
         <div class = "w-3/4 fixed md:top-80">
             <div class="grid md:grid-cols-3 xl:gap-x-14 lg:gap-x-8 md:gap-x-4 gap-y-0 md:h-full">
                 <div class = "shadow-2xl bg-gray md:text-normal md:text-2xl md:text-navy font-sans text-left break-all lg:pl-10 lg:pt-8 md:pb-3 md:pl-5 md:pt-4">Transcript <br/> Generator</div>
@@ -44,6 +52,20 @@ export const OptionBar = () => {
                 <div class = "box-content md:h-56 bg-gray md:text-normal md:text-base md:text-black font-sans text-left lg:pl-10 lg:pr-10 md:pl-5 md:pr-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
                 <div class = "box-content md:h-56 bg-gray md:text-normal md:text-base md:text-black font-sans text-left lg:pl-10 lg:pr-10 md:pl-5 md:pr-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
             </div>                                            
+=======
+        <div class = "w-3/4 lg:bottom-64 absolute md:top-80 md:h-80">
+            <div class="-z-10 md:h-full md:w-full absolute top-3 left-3 grid md:grid-cols-3 md:gap-4 md:h-full">
+                <div class = "bg-darkgray shadow-2xl">&nbsp;</div>
+                <div class = "bg-darkgray shadow-2xl">&nbsp;</div>
+                <div class = "bg-darkgray shadow-2xl">&nbsp;</div>
+            </div>
+            <div class="grid md:grid-cols-3 md:gap-4 md:h-full">
+                <div class = "bg-gray"></div>
+                <div class = "bg-gray"></div>
+                <div class = "bg-gray"></div>
+            </div>
+                                            
+>>>>>>> 23f60226b1a409425da186f612fbf0206649300e
         </div>
     )
 }
