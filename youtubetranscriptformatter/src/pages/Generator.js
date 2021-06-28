@@ -1,10 +1,11 @@
 import React from 'react';
+import {NavBar2} from '../layouts.js';
 
 
 function Generator() {
     return(
-        <div>
-            <h1>Hello</h1>
+        <div class = "w-screen h-screen grid flex bg-gray">
+            <NavBar2/>
         </div>
     );
 }
