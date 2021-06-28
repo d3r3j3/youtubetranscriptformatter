@@ -23,11 +23,6 @@ module.exports = {
       darkgray: '#d9d9d9',
       red: '#d41317',
       white: '#ffffff',
-<<<<<<< HEAD
-      lightnavy: '#546192',
-      green: '#499557',
-    },    
-=======
     },
     
     zIndex: {
@@ -44,7 +39,6 @@ module.exports = {
      '-10': -10,
       'auto': 'auto',
     }
->>>>>>> 23f60226b1a409425da186f612fbf0206649300e
   },
 
   variants: {
