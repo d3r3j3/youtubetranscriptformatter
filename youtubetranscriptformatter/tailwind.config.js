@@ -6,6 +6,9 @@ module.exports = {
   theme: {
     extend: {
       spacing: {
+        '62': '15.5rem',
+        '50': '12.5rem',
+        '88': '22rem',
         '70': '17.5rem',
       },
     },
@@ -18,6 +21,8 @@ module.exports = {
       darkgray: '#d9d9d9',
       red: '#d41317',
       white: '#ffffff',
+      green: '#499557',
+      lightnavy: '#566393',
     },
     
     zIndex: {

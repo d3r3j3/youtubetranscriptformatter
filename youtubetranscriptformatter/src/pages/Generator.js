@@ -1,10 +1,10 @@
 import React from 'react';
-
+import {NavBar} from '../layouts'
 
 function Generator() {
     return(
         <div>
-            <h1>Hello</h1>
+            <NavBar />
         </div>
     );
 }
