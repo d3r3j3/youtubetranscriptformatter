@@ -1,10 +1,24 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+const axios = require('axios');
+
 
 export class NavBar extends Component {
     render() {
         return(
-            <div class = "grid md:py-6 md:grid-cols-12 font-sans flex">       
+            <div class="w-full bg-white flex justify-center items-center font-sans">
+                <div class="w-11/12 py-6 flex grid grid-cols-12">
+                    <h1 class = "whitespace-nowrap text-normal text-base col-start-0">YT Transcript <span class = "text-navy">MSTR</span></h1>
+                    <div class="space-x-12 text-normal text-base col-start-9 col-end-13">
+                        <Link to="/" class = "text-red md:hover:underline">Home</Link>                
+                        <Link to="/Formatter" class = "text-navy md:hover:underline">Formatter</Link>
+                        <Link to="/Generator" class = "text-navy md:hover:underline">Generator</Link>
+                        <Link to="/Contact" class = "text-navy md:hover:underline">Contact</Link>
+                    </div>
+                    
+                </div>
+            </div>
+            /*<div class="w-full grid md:py-6 md:grid-cols-4 font-sans flex">       
                 <h1 class = "md:text-normal md:text-base md:col-start-1 lg:col-end-3 md:col-end-4 text-center">YT Transcript <span class = "text-navy">MSTR</span></h1>
                 <div class = "md:space-x-12 md:text-normal md:text-base md:col-start-5 md:col-end-12 text-right">
                     <Link to="/" class = "text-red md:hover:underline">Home</Link>                
@@ -12,13 +26,14 @@ export class NavBar extends Component {
                     <Link to="/Generator" class = "text-navy md:hover:underline">Generator</Link>
                     <Link to="/Contact" class = "text-navy md:hover:underline">Contact</Link>
                 </div>
-            </div>
+            </div>*/
         )
     }
 }
 
 export class IntroBar extends Component {
-    render() {
+    render(props) {
+        console.log(this.props.tool)
         return(
             
             <div class="w-full bg-navy shadow-2xl flex flex-col justify-center items-center">
@@ -27,7 +42,11 @@ export class IntroBar extends Component {
                 <p class = "text-white md:pb-44 md:pt-5 md:text-base font-normal md:leading-loose">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In hendrerit elementum lectus, sit amet viverra arcu maximus ac. Proin a dignissim ligula, et pulvinar justo. Aliquam eu varius turpis. Maecenas tempus libero eu mollis condimentum.</p>
                 
             </div>
-            <OptionBar />
+            {typeof this.props.tool !== 'undefined' ?
+            this.props.tool
+            :
+            <div>&nbsp;</div>
+            }
             </div>
         )
     }
@@ -35,7 +54,7 @@ export class IntroBar extends Component {
 
 export const OptionBar = () => {
     return(
-        <div class = "w-3/4 fixed md:top-80">
+        <div class = "w-3/4 flex justify-center items-center fixed md:top-80">
             <div class="grid md:grid-cols-3 xl:gap-x-14 lg:gap-x-8 md:gap-x-4 gap-y-0 md:h-full">
                 <div class = "bg-gray md:text-normal md:text-2xl md:text-navy font-sans text-left break-all lg:pl-10 lg:pt-8 md:pb-3 md:pl-5 md:pt-4">Transcript <br/> Generator</div>
                 <div class = "bg-gray md:text-normal md:text-2xl md:text-navy font-sans text-left break-all lg:pl-10 lg:pt-8 md:pb-3 md:pl-5 md:pt-4">Transcript <br/> Generator</div>
@@ -58,38 +77,138 @@ export const OptionBar = () => {
 }
 
 export class LinkBar extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            url:"https://www.youtube.com/watch?v=lwOsI8LtVEQ",
+            script:"",
+            langCode:"en",
+            options:[]
+        };
+    }
+
+    getCode = (code) => {
+        this.setState({langCode: code})
+    }
+
+    
+
+    getUrl = event => {
+        this.setState({url: event.target.value});
+    }
+
+    setScript = event => {
+        this.setState({script: event.target.value})
+        console.log(this.state.script)
+    }
+
+    getData = () => {
+        axios.get(`/scrape?v=${this.state.url}&code=${this.state.langCode}`).then(res => {
+            console.log(res.data.script, res.data.langCodes)
+            this.setState({script: res.data.script, options: res.data.langCodes})
+        }).catch(error => {
+            console.log("HAHAHA", error)
+        })
+            
+    }
+
+    
+
+
     render() {
         return(
-            <div class = "w-full grid md:grid-cols-12 flex md:pt-20">
-                <form class="w-full border-2 border-navy rounded shadow-md md:pl-2 md:col-start-3 md:col-end-11 md:py-1.5">
-                    <input placeholder="Enter Youtube link to start" class = "w-full outline-none bg-white text-lightnavy font-sans text-left"></input>
-                </form>           
+            <div class = "w-full flex justify-center items-center bg-gray shadow-2xl py-10">
+                <div class="w-3/4 flex flex-col">
+                    <h1 class = "flex text-navy md:pt-14 md:text-6xl">Formatter</h1>
+                    <div class="w-full flex grid grid-cols-5 gap-1 md:pb-44 md:pt-5">
+                        <form class="w-full col-start-0 col-span-3 py-0">
+                            <input class="w-full flex bg-white  rounded-md py-1.5 px-2 " onChange={this.getUrl} value={this.state.url} placeholder="enter url"></input>
+                        </form>
+                        <div class="w-full col-start-4 flex"> 
+                            <SelectMenu opts={this.state.options} passLang={this.getCode}/>
+                        </div>
+                        <div class="w-full col-start-5 flex-initial">
+                            <button class="w-full py-1.5 flex justify-center items-center bg-navy text-white rounded-md focus:outline-none font-bold hover:bg-gray hover:text-navy" onClick={this.getData}>GET</button>
+                        </div>
+                    </div>
+                    
+                </div>
+                {FormatterBar(this.state.script, this.setScript)}
             </div>
         )
     }
 }
 
-export class FormatterBar extends Component {
-    render() {
-        return(
-            <div class = "w-full grid md:grid-cols-12 flex md:pt-10 md:grid-rows-6">       
-                <div class = "text-lightnavy bg-white md:pl-2 md:pr-2 md:pt-2 border-t-2 border-l-2 border-r border-navy rounded-tl md:col-start-3 md:col-end-7 md:h-80 font-sans text-left"><textarea class="w-full resize-none focus:outline-none" rows="12" placeholder="Can Edit"></textarea></div>               
-                <div class = "text-lightnavy bg-white md:pl-2 md:pr-2 md:pt-2 border-t-2 border-l border-r-2 border-navy rounded-tr md:col-start-7 md:col-end-11 md:h-80 font-sans text-left">This box displays the formatted YouTube transcript.</div>  
-                <div class = "grid grid-rows-6 grid-cols-11 shadow-xl bg-white shadow-md border-b-2 border-l-2 border-r border-navy rounded-1 md:col-start-3 md:col-end-7 md:h-12 font-sans rounded-bl">
-                    <div class = "shadow-inner grid grid-rows-5 text-center row-start-1 row-end-6 lg:col-start-4 lg:col-end-9 md:col-start-3 md:col-end-10 bg-green rounded-full">
-                        <button class = "text-white font-semibold row-start-2 row-end-5 rounded-full">Select Language</button>
-                    </div>
-                </div>
-                <div class = "grid grid-rows-6 grid-cols-11 shadow-xl bg-white shadow-md border-b-2 border-l border-r-2 border-navy rounded-1 md:col-start-7 md:col-end-11 md:h-12 font-sans rounded-br">
-                    <div class = "shadow-inner inline-flex grid grid-rows-5 divide-x-2 row-start-1 row-end-6 lg:col-start-4 lg:col-end-9 md:col-start-3 md:col-end-10 bg-green rounded-full">
-                        <button class = "text-white font-semibold row-start-2 row-end-5 rounded-full">Punctuate</button>
-                        <button class = "text-white font-semibold row-start-2 row-end-5">Copy</button>
-                    </div>
-                </div>
+export const FormatterBar = (script, setScript) => {
+    return(
+       
+        <div class="w-3/4 flex grid grid-cols-2 md:py-1 fixed md:top-80">
+            <div class = "text-lightnavy bg-white md:pl-2 md:pr-2 md:pt-2 border-2 border-navy rounded-md shadow-2xl md:h-80 font-sans text-left">
+                <textarea class="bg-white w-full h-full resize-none focus:outline-none" onChange={setScript} value={script} rows="12" placeholder="Can Edit"></textarea>
             </div>
+            <div class = "text-lightnavy bg-white md:pl-2 md:pr-2 md:pt-2 border-2 border-navy rounded-md shadow-2xl md:h-80 font-sans text-left">
+                <p class="w-full h-full bg-white overflow-y-auto">{script}</p>
+            </div>
+        </div>       
+        
+    )
+    
+}
+
+export class SelectMenu extends Component {
+
+    
+    state = {
+        visible: false,
+        name: 'English',
+        code: 'en',
+        options: this.props.opts,
+    }
+
+    handleVisibility = () => {
+        this.setState({visible: !this.state.visible, options: this.props.opts})
+
+    }
+
+    handleLang = event => {
+        console.log(event.target.dataset.name, event.target.dataset.code)
+        console.log(this.options)
+        this.setState({visible: !this.state.visible, name: event.target.dataset.name, code: event.target.dataset.code})
+        this.props.passLang(event.target.dataset.code)
+    }
+
+    render() {
+        
+        const popup = this.state.options.map(item => {
+            return(
+                <button class="text-left bg-navy text-white border-b-2 border-gray py-1 px-2 font-semibold hover:bg-white hover:text-navy" onClick={this.handleLang} data-name={item.name} data-code={item.code}>{item.name}</button>
+            )
+        })
+
+        return(
+            <div class="w-full flex flex-col justify-center items-center">
+                <button class="w-full py-1.5 flex justify-center items-center bg-navy rounded-md text-white focus:outline-none font-bold hover:bg-gray hover:text-navy" onClick={this.handleVisibility}>
+                    <span>{this.state.name}</span>
+                </button>
+                {this.state.visible ?
+                <div class="w-full shadow-2xl flex flex-col max-h-36 overflow-y-auto z-20 border-t-4 border-gray rounded-b-md">
+                    {popup}
+                </div>
+                :
+                <div class="absolute">&nbsp;</div>
+                }
+            </div> 
+              
+           
         )
     }
+    
 }
+
+
+
+
 
 
 

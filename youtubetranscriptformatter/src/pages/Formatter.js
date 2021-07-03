@@ -1,13 +1,12 @@
 import React from 'react';
-import {NavBar, LinkBar, FormatterBar} from '../layouts'
+import {NavBar, LinkBar} from '../layouts'
 
 
 function Formatter() {
     return(
-        <div>
+        <div class="w-full bg-gray grid grid-rows flex justify-center items-center">
             <NavBar/>
             <LinkBar/>
-            <FormatterBar/>
         </div>
     );
 }
