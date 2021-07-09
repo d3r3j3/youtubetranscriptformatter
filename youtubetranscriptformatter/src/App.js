@@ -7,13 +7,13 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 function App() {
     return(
-        <div>
+        <div class="w-full p-0 m-0">
             <Router>
                 <Switch>
-                    <Route exact path="/" component={Home}><Home/></Route>
-                    <Route path="/formatter" component={Formatter}><Formatter/></Route>
-                    <Route path="/generator" component={Generator}/>
-                    <Route path="/contact" component={Contact}/><Contact/>
+                    <Route exact path="/" component={Home}></Route>
+                    <Route path="/formatter" component={Formatter}></Route>
+                    <Route path="/generator" component={Generator}></Route>
+                    <Route path="/contact" component={Contact}></Route>
                 </Switch>
             </Router>
         </div>
