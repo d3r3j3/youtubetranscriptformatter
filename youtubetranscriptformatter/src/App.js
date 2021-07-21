@@ -2,6 +2,7 @@ import Home from './pages/Home';
 import React from 'react';
 import Formatter from './pages/Formatter';
 import Generator from './pages/Generator';
+import Contact from './pages/Contact';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
                     <Route exact path="/" component={Home}></Route>
                     <Route path="/formatter" component={Formatter}></Route>
                     <Route path="/generator" component={Generator}></Route>
+                    <Route path="/contact" component={Contact}></Route>
                 </Switch>
             </Router>
         </div>

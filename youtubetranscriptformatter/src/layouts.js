@@ -73,6 +73,8 @@ export class LinkBar extends Component {
         super(props);
         this.state = {
             url:"https://www.youtube.com/watch?v=lwOsI8LtVEQ",
+            timeStart: "",
+            timeEnd: "",
             script:"",
             langCode:"en",
             options:[]
@@ -83,7 +85,9 @@ export class LinkBar extends Component {
         this.setState({langCode: code})
     }
 
-    
+    clearUrl = () => {
+        this.setState({url: ""})
+    }
 
     getUrl = event => {
         this.setState({url: event.target.value});
@@ -94,12 +98,20 @@ export class LinkBar extends Component {
         console.log(this.state.script)
     }
 
+    getTimeStart = event => {
+        this.setState({timeStart: event.target.value})
+    }
+
+    getTimeEnd = event => {
+        this.setState({timeEnd: event.target.value})
+    }
+
     clearScript = () => {
         this.setState({script: ""})
     }
 
     getData = () => {
-        axios.get(`/scrape?v=${this.state.url}&code=${this.state.langCode}`).then(res => {
+        axios.get(`/scrape?v=${this.state.url}&code=${this.state.langCode}&timeStart=${this.state.timeStart}&timeEnd=${this.state.timeEnd}`).then(res => {
             console.log(res.data.script, res.data.langCodes)
             this.setState({script: res.data.script, options: res.data.langCodes})
         }).catch(error => {
@@ -113,29 +125,33 @@ export class LinkBar extends Component {
 
     render() {
         return(
-            <div class = "w-full flex justify-center items-center bg-darkgray shadow-2xl py-10">
-                <div class="w-3/4 flex flex-col">
-                    <h1 class = "flex text-navy md:pt-14 md:text-6xl">Formatter</h1>
-                    <div class="w-full flex grid grid-cols-5 gap-1 md:pb-44 md:pt-5">
-                        <form class="w-full col-start-0 col-span-3 py-0">
-                            <input class="w-full flex bg-gray  rounded-md py-1.5 px-2 " onChange={this.getUrl} value={this.state.url} placeholder="enter url"></input>
+            <div class = "w-full h-full flex justify-center items-center bg-gray py-8">
+                <div class="w-1/2 flex flex-col">
+                    <h1 class = "flex text-navy md:pt-4 md:text-5xl font-sans">Formatter</h1>
+                    <div class = "w-full grid md:grid-cols-12 flex md:pt-10">
+                        <form class="w-full bg-white  rounded-l md:pl-2 md:col-start-1 md:col-end-7 md:py-1.5">
+                            <input placeholder="Enter Youtube url to start" onChange={this.getUrl} value={this.state.url} class = "w-full outline-none bg-white text-lightnavy font-sans text-left"></input>
+                        </form>                    
+                        <div class = "grid md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 2xl:grid-cols-9 w-full bg-white  md:col-start-7 md:col-end-10 md:py-1.5">
+                            <button class="md:col-start-2 md:col-end-3 lg:col-start-3 lg:col-end-4 xl:col-start-5 xl:col-end-6 2xl:col-start-6 2xl:col-end-7 h-6 w-6 focus:outline-none focus:bg-navy" onClick={this.getData}><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="green"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg></button>
+                            <button class="md:col-start-4 md:col-end-5 lg:col-start-5 lg:col-end-6 xl:col-start-7 xl:col-end-8 2xl:col-start-8 2xl:col-end-9 h-6 w-6 focus:outline-none focus:bg-green" onClick={this.clearUrl}><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="navy"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12" /></svg></button>
+                        </div>
+                        <form class="font-semibold text-white bg-green grid grid-cols-4 flex md:col-start-10 md:col-end-13 rounded-r">
+                            <label class="flex py-1.5 md:pl-2">Start</label>
+                            <input class="focus:outline-none md:pl-2 border-l-2 border-r-2 border-white bg-green" placeholder="00:00" onChange={this.getTimeStart} value={this.state.timeStart}></input>
+                            <label class="flex py-1.5 md:pl-2">End</label>
+                            <input class="focus:outline-none md:pl-2 border-l-2 border-white bg-green rounded-r" placeholder="00:00" onChange={this.getTimeEnd} value={this.state.timeEnd}></input>
                         </form>
-                        <div class="w-full col-start-4 flex"> 
-                            <SelectMenu opts={this.state.options} passLang={this.getCode}/>
-                        </div>
-                        <div class="w-full col-start-5 flex-initial">
-                            <button class="w-full py-1.5 flex justify-center items-center bg-navy text-white rounded-md focus:outline-none font-bold hover:bg-gray hover:text-navy" onClick={this.getData}>GET</button>
-                        </div>
-                    </div>
-                    
+                     
+                    </div>                    
                 </div>
-                {FormatterBar(this.state.script, this.setScript, this.clearScript)}
+                {FormatterBar(this.state.script, this.state.options, this.getCode, this.setScript, this.clearScript)}
             </div>
         )
     }
 }
 
-export const FormatterBar = (script, setScript, clearScript) => {
+export const FormatterBar = (script, options, getCode, setScript, clearScript) => {
     let textArea;
     const copyToClipBoard = () => {
         const elem = textArea
@@ -145,22 +161,19 @@ export const FormatterBar = (script, setScript, clearScript) => {
 
     return(
        
-        <div class="w-3/4 flex grid grid-cols-2 md:py-1 absolute md:top-80">
-            <div class = "text-lightnavy bg-white md:pl-2 md:pr-2 md:pt-2 border-t-2 border-l-2 border-navy border-r-2 rounded-tl-md md:h-80 font-sans text-left">
-                <textarea class="bg-white w-full h-full resize-none focus:outline-none" onChange={setScript} value={script} rows="12" placeholder="Can Edit"></textarea>
+        <div class="w-1/2 md:top-70 grid-cols-12 absolute">
+            <div class = "md:col-start-1 md:col-end-12 bg-white md:pl-2 md:pr-2 md:pt-2 border-t-2 border-l-2 border-navy border-r-2 rounded-t-md md:h-80 font-sans text-left">
+                <textarea class="bg-white w-full h-full resize-none focus:outline-none" ref={(textarea) => textArea = textarea} onChange={setScript} value={script} rows="12" placeholder="Can Edit"></textarea>
+            </div>           
+            <div class = "w-full bg-white border-b-2 border-l-2 border-r-2 border-navy rounded-1 md:col-start-7 md:col-end-11 md:h-12 font-sans rounded-b-md flex justify-center items-center">
+                <div class="grid grid-cols-3 bg-opacity-0 text-white font-semibold inline-flex rounded-full justify-center items-center">
+                    <SelectMenu opts={options} passLang={getCode} mainBtnStyle="bg-green hover:bg-navy rounded-l-full px-4 py-1 focus:outline-none" optsBtnStyle="bg-green border-b-2 border-white hover:bg-white hover:text-navy"/>
+                    <button class="bg-green hover:bg-navy border-l-2 border-r-2 border-white px-4 py-1 focus:outline-none" onClick={copyToClipBoard}>Copy</button>
+                    <button class="bg-green hover:bg-navy rounded-r-full px-4 py-1 focus:outline-none" onClick={clearScript}>Clear</button>
+                </div>
             </div>
-            <div class = "text-lightnavy bg-white md:pl-2 md:pr-2 md:pt-2 border-t-2 border-r-2 border-navy rounded-tr-md md:h-80 font-sans text-left">
-                <textarea ref={(textarea) => textArea = textarea} readonly class="w-full h-full bg-white overflow-y-auto resize-none focus:outline-none " value={script}></textarea>
-            </div>
-            <div class="flex bg-darkgray grid grid-cols-4 border-l-2 border-navy rounded-bl-md text-white">
-                <button onClick={clearScript} class="bg-navy col-span-2 font-bold focus:outline-none hover:text-navy hover:bg-gray rounded-bl-md">Clear</button>
-        
-            </div>
-            <div class="flex bg-darkgray grid grid-cols-4 border-r-2 border-navy rounded-br-md text-white">
-                <button class="col-start-3 bg-navy font-bold focus:outline-none hover:text-navy hover:bg-gray border-r-2 border-gray">Punctuate</button>
-                <button onClick={copyToClipBoard} class="bg-navy font-bold focus:outline-none hover:text-navy hover:bg-gray rounded-br-md">Copy</button>
-            </div>
-        </div>       
+            
+        </div>            
         
     )
     
@@ -192,17 +205,17 @@ export class SelectMenu extends Component {
         
         const popup = this.state.options.map(item => {
             return(
-                <button class="text-left bg-navy text-white border-b-2 border-gray py-1 px-2 font-semibold hover:bg-white hover:text-navy" onClick={this.handleLang} data-name={item.name} data-code={item.code}>{item.name}</button>
+                <button class={this.props.optsBtnStyle} onClick={this.handleLang} data-name={item.name} data-code={item.code}>{item.name}</button>
             )
         })
 
         return(
             <div class="w-full flex flex-col justify-center items-center">
-                <button class="w-full py-1.5 flex justify-center items-center bg-navy rounded-md text-white focus:outline-none font-bold hover:bg-gray hover:text-navy" onClick={this.handleVisibility}>
+                <button class={this.props.mainBtnStyle} onClick={this.handleVisibility}>
                     <span>{this.state.name}</span>
                 </button>
                 {this.state.visible ?
-                <div class="w-full shadow-2xl flex flex-col max-h-36 overflow-y-auto z-20 border-t-4 border-gray rounded-b-md">
+                <div class="w-36 shadow-2xl flex flex-col max-h-36 overflow-y-auto z-20 border-gray rounded-b-md absolute mt-56">
                     {popup}
                 </div>
                 :
@@ -217,6 +230,17 @@ export class SelectMenu extends Component {
 }
 
 
+
+
+
+/*
+<div class = "text-white font-semibold inline-flex grid grid-rows-5 divide-x-2 row-start-1 row-end-6 lg:col-start-2 lg:col-end-11 md:col-start-2 md:col-end-11 bg-green rounded-full">
+                    <button class = "row-start-2 row-end-5 hover:bg-navy">Language</button>
+                    <button class = "row-start-2 row-end-5">Time</button>
+                    <button class = "row-start-2 row-end-5">Punctuate</button>
+                    <button class = "row-start-2 row-end-5">Copy</button>
+                </div>
+*/
 
 
 

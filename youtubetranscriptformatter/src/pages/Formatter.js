@@ -4,9 +4,12 @@ import {NavBar, LinkBar} from '../layouts'
 
 function Formatter() {
     return(
-        <div class="w-full bg-gray grid grid-rows flex justify-center items-center">
+        <div class="w-full h-full bg-gray grid grid-rows flex justify-center items-center">
             <NavBar/>
             <LinkBar/>
+            <div class="w-full h-full bg-gray fixed -z-10">
+                &nbsp;
+            </div>
         </div>
     );
 }
