@@ -19,10 +19,13 @@ module.exports = {
       navy: '#1a2b6d',
       gray: '#f2f2f2',
       darkgray: '#d9d9d9',
+      black: '#000000',
       red: '#d41317',
       white: '#ffffff',
       green: '#499557',
       lightnavy: '#566393',
+      darkgreen: '#3e804a',
+      golden: '#FFD700',
     },
     
     zIndex: {

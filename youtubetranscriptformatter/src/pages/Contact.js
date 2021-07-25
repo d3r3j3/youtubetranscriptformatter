@@ -1,17 +1,16 @@
 import React from 'react';
-import {NavBar, IntroBar} from '../layouts'
+import {NavBar, ContactBar, Donate} from '../layouts'
 
-const data = {
-    title: "Contact",
-    info: "japple@seed.com",
-  
-  }
 
 function Generator() {
     return(
         <div class="w-full grid grid-rows flex justify-center items-center">
             <NavBar />
-            <IntroBar title={data.title} info={data.info} />
+            <div class="w-full bg-navy flex justify-center items-center text-white md:text-6xl md:pb-8 font-bold">
+                <h1 class="w-3/5 bg-navy">Contact</h1>
+            </div>
+            <ContactBar />
+            <Donate />
         </div>
     );
 }

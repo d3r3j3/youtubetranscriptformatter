@@ -55,27 +55,30 @@ let fetchTranscript = async (url, codes, segment) => {
             let data = await promise.text()
             let res = data.replace(/&amp;/g, '&').replace(/&#39;/g, "'")
             const dom = new jsdom.JSDOM(res)
-            //console.log(res)
             const elementNode = dom.window.document.querySelectorAll("text")
             let script = ''
+            let timedScript = ''
             let time = []
             elementNode.forEach(element => {
                 
                 
-                if(segment.start.length > 0) {
+                if(segment.start.length > 0 && segment.start.search(':') > 0) {
                     if((parseFloat(element.getAttribute('start')) >= timeStrConversion(segment.start).totalTime) && ((parseFloat(element.getAttribute('start')) + parseFloat(element.getAttribute('dur'))) <= timeStrConversion(segment.end).totalTime)) {
                         script += ' ' + element.innerHTML
+                        timedScript += '' + timeConversion(parseInt(element.getAttribute('start'))) + '  ' + element.innerHTML + '\n'
                     } else {
+                        console.log(segment)
                         console.log(element.getAttribute('start'), timeStrConversion(segment.start).totalTime, timeStrConversion(segment.end).totalTime, element.getAttribute('start') + element.getAttribute('dur'))
                         console.log("element not in time range!")
                     }
                 } else {
                     script += ' ' + element.innerHTML
+                    timedScript += '' + timeConversion(parseInt(element.getAttribute('start'))) + '  ' + element.innerHTML + '\n'
                     time.push({start: element.getAttribute('start'), dur: element.getAttribute('dur')})
                 }
                 
             })
-            return {script: script.slice(1), langCodes: codes}
+            return {script: script.slice(1), langCodes: codes, timeScript: timedScript}
         } else {
             console.log("Oh NO")
         }
@@ -85,9 +88,22 @@ let fetchTranscript = async (url, codes, segment) => {
 }
 
 let timeConversion = (secs) => {
-    let min = secs / 60
+    let min = parseInt(secs / 60)
     let sec = secs % 60
-    return {minutes: min, seconds: sec}
+    let timeStr = ''
+    if(min < 10) {
+        timeStr += '0' + min
+    } else {
+        timeStr += min
+    }
+
+    if(sec < 10) {
+        timeStr += ':' + '0' + sec
+    } else {
+        timeStr += ':' + sec
+    }
+
+    return timeStr
 }
 
 let timeStrConversion = (timeStr) => {
@@ -96,8 +112,20 @@ let timeStrConversion = (timeStr) => {
         console.log("Invalid time please insert colon between minutes and seconds")
     } else {
         let timeArray = timeStr.split(":")
-        let min = parseInt(timeArray[0])
-        let sec = parseInt(timeArray[1])
+        let min = 0
+        let sec = 0
+        if(timeArray[0].length === 0) {
+            min = 0
+        } else {
+            min = parseInt(timeArray[0])
+        }
+
+        if(timeArray[1].length === 0) {
+            sec = 0
+        } else {
+            sec = parseInt(timeArray[1])
+        }
+        
         return {minutes: min, seconds: sec, totalTime: timeStrSeconds(min, sec)}
     }
 }
@@ -114,10 +142,10 @@ app.get('/scrape', (req, res) => {
     getReq(req.query.v, req.query.code, time).then(response => {
         console.log("--------------------------------------------", req.query.code)
         fetchTranscript(response.url, response.langCodes, response.time).then(data => {
-            return {script: data.script, langCodes: data.langCodes}
+            return {script: data.script, langCodes: data.langCodes, timeScript: data.timeScript}
         }).then((dta) => {
             //console.log(dta)
-            res.send({script: dta.script, langCodes: dta.langCodes})
+            res.send({script: dta.script, langCodes: dta.langCodes, timeScript: dta.timeScript})
         })
     })
 })
