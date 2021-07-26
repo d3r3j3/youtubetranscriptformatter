@@ -1,5 +1,5 @@
 import React from 'react';
-import {NavBar, ContactBar, Donate} from '../layouts'
+import {NavBar, ContactBar, CopyRight, Donate} from '../layouts'
 
 
 function Generator() {
@@ -10,6 +10,7 @@ function Generator() {
                 <h1 class="w-3/5 bg-navy">Contact</h1>
             </div>
             <ContactBar />
+            <CopyRight />
             <Donate />
         </div>
     );
