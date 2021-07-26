@@ -189,11 +189,6 @@ export const FormatterBar = (script, options, getCode, setScript, timeData) => {
         document.execCommand("copy")
     }
 
-    const copyTScriptToBoard = () => {
-        const elem = timeArea
-        elem.select()
-        document.execCommand("copy")
-    }
 
     return(
        
