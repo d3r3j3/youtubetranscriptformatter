@@ -182,7 +182,6 @@ export class LinkBar extends Component {
 
 export const FormatterBar = (script, options, getCode, setScript, timeData) => {
     let textArea;
-    let timeArea;
     const copyToClipBoard = () => {
         const elem = textArea
         elem.select()
