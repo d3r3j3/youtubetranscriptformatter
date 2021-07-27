@@ -2,7 +2,7 @@
   "name": "youtubetranscriptformatter",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:5000",
+  "proxy": "https://warm-inlet-51238.herokuapp.com/",
   "dependencies": {
     "@craco/craco": "^5.9.0",
     "@testing-library/jest-dom": "^5.12.0",
