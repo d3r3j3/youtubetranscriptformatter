@@ -50,7 +50,7 @@ let getReq = async (url, lang, time) => {
 
 let fetchTranscript = async (url, codes, segment) => {
     try {
-        let promise = await fetch(url)
+        let promise = await fetch(url, {mode: 'no-cors'})
         if(promise) {
             let data = await promise.text()
             let res = data.replace(/&amp;/g, '&').replace(/&#39;/g, "'")

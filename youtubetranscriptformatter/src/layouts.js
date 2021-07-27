@@ -147,9 +147,7 @@ export class LinkBar extends Component {
 
     getData = (langCode) => {
  
-        console.log("Hello WORLD: ", langCode)
-
-        axios.get(`/scrape?v=${this.state.url}&code=${langCode == null ? langCode : this.state.langCode}&timeStart=${this.state.timeMinStart + ":" + this.state.timeSecStart}&timeEnd=${this.state.timeMinEnd + ":" + this.state.timeSecEnd}`).then(res => {
+        axios.get(`https://warm-inlet-51238.herokuapp.com/scrape?v=${this.state.url}&code=${langCode == null ? langCode : this.state.langCode}&timeStart=${this.state.timeMinStart + ":" + this.state.timeSecStart}&timeEnd=${this.state.timeMinEnd + ":" + this.state.timeSecEnd}`).then(res => {
             console.log(res.data.script, res.data.langCodes)
             this.setState({script: res.data.script, options: res.data.langCodes, timeScript: res.data.timeScript})
         }).catch(error => {
