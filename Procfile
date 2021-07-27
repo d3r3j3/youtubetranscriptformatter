@@ -1,1 +1,1 @@
-web: node ytbackend/ytbackend.js
+web: node ytbackend.js
