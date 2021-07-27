@@ -93,7 +93,7 @@ export class LinkBar extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            url:"https://www.youtube.com/watch?v=lwOsI8LtVEQ",
+            url:"",
             timeMinStart: "",
             timeSecStart: "",
             timeMinEnd: "",
