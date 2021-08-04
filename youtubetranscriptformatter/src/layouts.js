@@ -172,7 +172,7 @@ export class LinkBar extends Component {
                         </div>
                     </div>                    
                 </div>
-                {FormatterBar({script: this.state.script, timeScript: this.state.timeScript}, this.state.options, this.getCode, this.setScript, {minStart: this.getTimeMinStart, secStart: this.getTimeSecStart, minEnd: this.getTimeMinEnd, secEnd: this.getTimeSecEnd})}
+                {FormatterBar({script: this.state.script, timeScript: this.state.timeScript, code: this.state.langCode}, this.state.options, this.getCode, this.setScript, {minStart: this.getTimeMinStart, secStart: this.getTimeSecStart, minEnd: this.getTimeMinEnd, secEnd: this.getTimeSecEnd})}
             </div>
         )
     }

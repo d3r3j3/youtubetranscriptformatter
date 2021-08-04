@@ -137,6 +137,32 @@ let timeStrSeconds = (mins, secs) => {
 
 app.use(cors())
 
+/*
+let getPunctuatedScript = async (txt, code) => {
+    console.log(code)
+    if(code === 'en') {
+        let promise = await fetch(`http://bark.phon.ioc.ee/punctuator?text=${txt}`, {method: 'POST'})
+
+        if(promise) {
+            let data = await promise.text()
+            return data
+        } else {
+            return "error"
+        }
+    } else {
+        return "English can only be punctuated"
+    }
+    
+}
+
+app.get('/punctuate', (req, res) => {
+    getPunctuatedScript(req.query.txt, req.query.code).then(response => {
+        res.send({script: response})
+    }).catch(error => {
+        console.log(error)
+    })
+})
+*/
 app.get('/scrape', (req, res) => {
     let time = {start: req.query.timeStart, end: req.query.timeEnd}
     getReq(req.query.v, req.query.code, time).then(response => {
