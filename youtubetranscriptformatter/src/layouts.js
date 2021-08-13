@@ -6,8 +6,18 @@ const axios = require('axios');
 
 
 export class NavBar extends Component {
+
+    state = {
+        status: false,
+    }
+
+    showMenu = () => {
+        this.setState({status: !this.state.status})
+    }
+
     render() {
         return(
+            /*
             <div class="w-full bg-white flex justify-center items-center font-sans">
                 <div class="w-11/12 flex grid grid-cols-12">
                     <div class = "inline-flex space-x-3 whitespace-nowrap font-medium text-base col-start-0">
@@ -23,10 +33,143 @@ export class NavBar extends Component {
                     
                 </div>
             </div>
+            */
+
+            <div class="w-full bg-white flex justify-center font-sans">
+                <div class="w-11/12 flex grid grid-cols-6 py-1">
+                    <div class="inline-flex md:items-center space-x-3 whitespace-nowrap text-base col-start-0">
+                        <img src={logo} alt="bwdl" class="w-7 h-7"/>
+                        <h1>YT Transcript <span>MSTR</span></h1>
+                    </div>
+                    <div class="col-start-6 md:hidden">
+                        <button onClick={this.showMenu} class="float-right focus:outline-none">
+                            <img src="https://img.icons8.com/material-outlined/24/000000/menu--v3.png" alt="mnu"/>
+                        </button>
+                        {
+                            !this.state.status ? null : 
+                            <div class="pt-6 mr-4 flex flex-col">
+                                <Link to="/" class = "text-red md:hover:underline">Home</Link>                
+                                <Link to="/Formatter" class = "text-navy md:hover:underline">Formatter</Link>
+                                <Link to="/Generator" class = "text-navy md:hover:underline">Generator</Link>
+                                <Link to="/Contact" class = "text-navy md:hover:underline">Contact</Link>
+                            </div> 
+                        }
+                    </div>
+                    <div class="hidden md:flex py-6 space-x-6 font-medium text-base col-start-9 col-end-12">
+                        <Link to="/" class = "text-red md:hover:underline">Home</Link>                
+                        <Link to="/Formatter" class = "text-navy md:hover:underline">Formatter</Link>
+                        <Link to="/Generator" class = "text-navy md:hover:underline">Generator</Link>
+                        <Link to="/Contact" class = "text-navy md:hover:underline">Contact</Link>
+                    </div>
+                    
+                </div>
+            </div>
         )
     }
 }
 
+
+export class IntroBar extends Component {
+
+    state = {
+        url: '',
+    }
+
+    getUrl = event => {
+        this.setState({url: event.target.value})
+    }
+
+    render() {
+        return(            
+            <div class="w-full bg-navy flex flex-col justify-center z-0 items-center">
+                <div class = "font-sans flex flex-col w-6/7 sm:w-6/7 md:w-5/7">       
+                    <h1 class = "text-white text-xl lg:pt-14 lg:text-5xl tracking-wide">Our Services</h1>
+                    <p class = "text-sm sm:pl-1.5 text-white lg:pb-5 lg:pt-6 lg:text-base font-normal lg:leading-loose sm:tracking-wider">Welcome to the most efficient and latest YouTube transcript generator! With just a few clicks, we hope to provide <span class = "text-orange sm:text-xl font-semibold">formatted</span>, <span class = "text-orange sm:text-xl font-semibold">punctuated</span>, and <span class ="text-orange sm:text-xl font-semibold">free</span> transcripts for all languages!</p>
+                    <div class = "grid grid-cols-11 pb-12 flex sm:pl-0.5 sm:pr-0.5 pt-2.5 sm:pb-24 lg:grid-cols-11">
+                        <div class="grid col-start-1 col-end-1 flex items-center justify-center sm:grid-cols-3 border-navy bg-white border-l-2 border-b-2 border-t-2 rounded-l-full lg:col-start-1 lg:col-end-1 lg:py-2.5"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 sm:w-5 col-start-2 col-end-3" fill="none" viewBox="0 0 24 24" stroke="gray"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg></div>
+                        <form class=" col-start-2 col-end-11 border-navy border-b-2 border-t-2 bg-white lg:pl-2 lg:col-start-2 md:col-end-11 lg:py-1.5">
+                            <input placeholder="Enter a Youtube url to start" onChange={this.getUrl} value={this.state.url} class = "text-sm sm:pt-0.5 w-full outline-none bg-white text-lightnavy font-sans text-left"></input>
+                        </form>                  
+                        <Link to={{pathname:`/Formatter/`, search: `?v=${encodeURIComponent(this.state.url)}`}} class="grid border-navy bg-green lg:col-start-11 lg:col-end-12 flex items-center justify-center border-b-2 border-t-2 border-r-2 rounded-r-full text-white focus:outline-none">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 " fill="none" viewBox="0 0 24 24" stroke="white"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                        </Link>
+                    </div>                               
+                </div>
+            </div>
+        )
+    }
+}
+
+// xl:tracking-wide lg:text-xl xl:text-2xl text-navy font-sans text-left lg:pl-2 xl:pl-6 mt-4
+// lg:text-normal lg:text-base lg:tracking-wider md:text-black opacity-80 font-serif text-left lg:pl-2 lg:pr-2 xl:pl-6 xl:pr-6 lg:leading-10
+
+export class OptionBar extends Component {
+    render() {
+        return(
+            <div class = "w-full flex flex-col justify-center items-center mb-6">
+                <div class="w-6/7 h-auto grid grid-rows-3 sm:grid-rows-1 gap-2 -mt-11 sm:px-3 md:w-5/7 sm:grid-cols-11">
+                    <div class = "transform hover:scale-105 flex flex-col rounded-2xl ring-5 ring-darkergray ring-offset-8 bg-gradient-to-br from-gray to-faintblue sm:col-start-1 sm:col-end-4">
+                        <div class = "xl:tracking-wide lg:text-xl xl:text-2xl text-navy font-sans text-left lg:pl-2 xl:pl-6 mt-4">Formatter</div>
+                        <div class = "lg:text-normal lg:text-base lg:tracking-wider md:text-black opacity-80 font-serif text-left lg:pl-2 lg:pr-2 xl:pl-6 xl:pr-6 lg:leading-6">Extract and format videos' automatically captioned transcripts using modern web scraping technology and advanced algorithms.</div>
+                        <div class = "grid sm:grid-cols-4 sm:mr-5">
+                            <Link to={{pathname:`/Formatter`}} class = "col-start-5 absolute right-4 bottom-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="transform hover:scale-125 h-11 w-11" fill="none" viewBox="0 0 24 24" stroke="green"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            </Link>
+                        </div>
+                    </div>
+
+                    <div class = "transform hover:scale-105 flex flex-col rounded-2xl ring-5 ring-darkergray ring-offset-8 bg-gradient-to-br from-gray to-faintblue sm:col-start-5 sm:col-end-8">
+                        <div class = "xl:tracking-wide lg:text-xl xl:text-2xl text-navy font-sans text-left lg:pl-2 xl:pl-6 mt-4">Generator</div>
+                        <div class = "lg:text-normal lg:text-base lg:tracking-wider md:text-black opacity-80 font-serif text-left lg:pl-2 lg:pr-2 xl:pl-6 xl:pr-6 lg:leading-6">Generate transcripts of videos or audios using a progressive speech recognition algorithm trained by machine learning technology.</div>
+                        <div class = "grid sm:grid-cols-4 sm:mr-5 py-4">
+                            <p>&nbsp;</p>
+                            <Link to={{pathname:`/Generator`}} class = "col-start-5 absolute right-4 bottom-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="transform hover:scale-125 h-11 w-11" fill="none" viewBox="0 0 24 24" stroke="green"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            </Link>
+                        </div>
+                    </div>
+
+                    <div class = "transform hover:scale-105 flex flex-col rounded-2xl ring-5 ring-darkergray ring-offset-8 bg-gradient-to-br from-gray to-faintblue sm:col-start-9 sm:col-end-12">
+                        <div class = "xl:tracking-wide lg:text-xl xl:text-2xl text-navy font-sans text-left lg:pl-2 xl:pl-6 mt-4">Punctuator</div>
+                        <div class = "lg:text-normal lg:text-base lg:tracking-wider md:text-black opacity-80 font-serif text-left lg:pl-2 lg:pr-2 xl:pl-6 xl:pr-6 lg:leading-6">Add punctuations to transcript using a bidirectional recurrent neural network model with attention mechanism. Comming Soon!</div>
+                        <div class = "grid sm:grid-cols-4 sm:mr-5 py-4">
+                            <p>&nbsp;</p>
+                            <Link to={{pathname:`/Formatter`}} class = "col-start-5 absolute right-4 bottom-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="transform hover:scale-125 h-11 w-11" fill="none" viewBox="0 0 24 24" stroke="green"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            </Link>
+                        </div>
+                    </div>
+     
+                </div>
+            </div>
+        )
+    }
+}
+
+
+/*
+<div class = "mt-6 transform hover:scale-105 rounded-2xl ring-5 ring-darkergray ring-offset-8 bg-gradient-to-br from-gray to-faintblue sm:mt-0 sm:col-start-5 sm:col-end-8">
+                        <div class = "xl:tracking-wide lg:text-xl xl:text-2xl text-navy font-sans text-left lg:pl-2 xl:pl-6 mt-4">Generator</div>
+                        <div class = "sm:pt-2.5 lg:text-normal lg:text-base lg:tracking-wider md:text-black opacity-80 font-serif text-left lg:pl-2 lg:pr-2 xl:pl-6 xl:pr-6 lg:leading-10">Generate transcripts of videos or audios using a progressive speech recognition algorithm trained by machine learning technology.</div>
+                        <div class = "grid sm:grid-cols-4 sm:mr-5 sm:mb-3.5">
+                            <Link to="/Generator" class = "col-start-5">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="transform hover:scale-125 h-11 w-11" fill="none" viewBox="0 0 24 24" stroke="green"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            </Link>
+                        </div>
+                    </div>
+                    <div class = "mt-6 transform hover:scale-105 rounded-2xl ring-5 ring-darkergray ring-offset-8 bg-gradient-to-br from-gray to-faintblue sm:mt-0 sm:col-start-9 sm:col-end-12">
+                        <div class = "xl:tracking-wide lg:text-xl xl:text-2xl text-navy font-sans text-left lg:pl-2 xl:pl-6 mt-4">Punctuator</div>
+                        <div class = "sm:pt-2.5 lg:text-normal lg:text-base lg:tracking-wider md:text-black opacity-80 font-serif text-left lg:pl-2 lg:pr-2 xl:pl-6 xl:pr-6 lg:leading-10">Add punctuations to transcript using a bidirectional recurrent neural network model with attention mechanism</div>
+                        <div class = "grid sm:grid-cols-4 sm:mr-5 sm:mb-3.5">
+                            <Link to="/Formatter" class = "col-start-5">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="transform hover:scale-125 h-11 w-11" fill="none" viewBox="0 0 24 24" stroke="green"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            </Link>
+                        </div>
+                    </div>
+*/
+
+
+/*
 export class IntroBar extends Component {
     render(props) {
         console.log(this.props.tool)
@@ -87,13 +230,14 @@ export const OptionBar = () => {
         </div>
     )
 }
+*/
 
 export class LinkBar extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            url:"",
+            url: props.urlParam,
             timeMinStart: "",
             timeSecStart: "",
             timeMinEnd: "",
@@ -145,22 +289,59 @@ export class LinkBar extends Component {
         this.setState({script: "", timeScript: ""})
     }
 
-    getData = (langCode) => {
- 
-        axios.get(`https://warm-inlet-51238.herokuapp.com/scrape?v=${this.state.url}&code=${langCode == null ? langCode : this.state.langCode}&timeStart=${this.state.timeMinStart + ":" + this.state.timeSecStart}&timeEnd=${this.state.timeMinEnd + ":" + this.state.timeSecEnd}`).then(res => {
-            console.log(res.data.script, res.data.langCodes)
-            this.setState({script: res.data.script, options: res.data.langCodes, timeScript: res.data.timeScript})
-        }).catch(error => {
-            console.log("Transcript Error: ", error)
-        })
+    getData = async (langCode) => {
+        //https://warm-inlet-51238.herokuapp.com
+        //https://www.youtube.com/watch?v=0i_XWYKfIdY
+        if(this.state.url !== undefined && this.state.url.includes('www.youtube.com/watch?v=')) {
+            try {
+                let res = await axios.get(`/scrape?v=${this.state.url}&code=${langCode == null ? langCode : this.state.langCode}&timeStart=${this.state.timeMinStart + ":" + this.state.timeSecStart}&timeEnd=${this.state.timeMinEnd + ":" + this.state.timeSecEnd}`)
+                
+                this.setState({script: res.data.script, options: res.data.langCodes, timeScript: res.data.timeScript})
+                console.log(res.data.script, res.data.langCodes)
+                
+            } catch (error) {
+                console.log(error)
+                this.setState({script: "Failed to get script", options: [], timeScript: ''})
+            }
+
+        } else {
+            console.log("URL len 0 or bad URL given!")
+            if(this.state.url.length !== 0) {
+                this.setState({script: "Bad URL Given", options: this.state.options, timeScript: this.state.timeScript})
+            } else {
+                this.setState({script: "No url given", options: this.state.options, timeScript: this.state.timeScript})
+            }
+        }
             
+    }
+
+
+    async componentDidMount() {
+        
+        if(this.state.url !== undefined && this.state.url.includes('www.youtube.com/watch?v=')) {
+            try {
+                let res = await axios.get(`/scrape?v=${this.state.url}&code=en&timeStart=${this.state.timeMinStart + ":" + this.state.timeSecStart}&timeEnd=${this.state.timeMinEnd + ":" + this.state.timeSecEnd}`)
+                this.setState({script: res.data.script, options: res.data.langCodes, timeScript: res.data.timeScript})
+            } catch (error) {
+                console.log(error)
+                this.setState({script: "Failed to get script", options: this.state.options, timeScript: this.state.timeScript})
+            }
+        } else {
+            console.log("Error: ", "Length is 0")
+            if(this.state.url.length !== 0) {
+                this.setState({script: "Bad URL Given", options: this.state.options, timeScript: this.state.timeScript})
+            }
+        }
+        
     }
 
     
     render() {
+
+
         return(
             <div class = "w-full h-full flex justify-center items-center bg-gray py-8">
-                <div class="w-1/2 flex flex-col">
+                <div class="w-6/7 md:w-1/2 flex flex-col">
                     <h1 class = "flex text-navy md:pt-4 md:text-5xl font-sans">Formatter</h1>
                     <div class = "w-full grid md:grid-cols-12 flex md:pt-10">
                         <form class="border-navy border-l-2 border-b-2 border-t-2 w-full bg-white rounded-l md:pl-2 md:col-start-1 md:col-end-10 md:py-1.5">
@@ -189,7 +370,7 @@ export const FormatterBar = (script, options, getCode, setScript, timeData) => {
 
     return(
        
-        <div class="w-1/2 md:top-70 grid-cols-12 absolute">
+        <div class="w-6/7 top-44 md:w-1/2 md:top-70 grid-cols-12 absolute">
             <div class = "md:col-start-1 md:col-end-12 bg-white md:pl-2 md:pr-2 md:pt-2 border-t-2 border-l-2 border-navy border-r-2 rounded-t-md md:h-80 font-sans text-left">
                 <textarea class="bg-white w-full h-full resize-none focus:outline-none pl-2" ref={(textarea) => textArea = textarea} onChange={setScript} value={script.script} rows="12" placeholder="Can Edit"></textarea>
             </div>           
@@ -366,7 +547,7 @@ export class ContactBar extends Component {
 
         return(
             <div class="w-full flex justify-center items-center">
-                <form class="pt-24 pb-2 w-full max-w-lg pl-1/2" onSubmit={sendEmail}>
+                <form class="pt-3 sm:pt-24 pb-2 w-6/7 sm:w-full max-w-lg pl-1/2" onSubmit={sendEmail}>
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                             <label class="opacity-90 block uppercase tracking-wide text-black text-xs font-bold mb-2" for="grid-first-name">

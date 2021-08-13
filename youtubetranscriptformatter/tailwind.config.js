@@ -5,11 +5,18 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      ringWidth: {
+        
+        '5': '5px',
+        
+      },
+
       spacing: {
-        '62': '15.5rem',
+        '22': '5.5rem',
         '50': '12.5rem',
         '88': '22rem',
         '70': '17.5rem',
+        '12': '5.5rem',
       },
 
       width: {
@@ -21,23 +28,33 @@ module.exports = {
         '4/7': '57.1428571%',
         '5/7': '71.4285714%',
         '6/7': '85.7142857%',
+        '6/11': '54.545455%',
       },
     },
 
+
+    fontsize:{
+      '1.5xl': '1.375rem',
+    },
 
 
     colors: {
       navy: '#1a2b6d',
       gray: '#f2f2f2',
-      darkgray: '#d9d9d9',
+      darkgray: '#e1e1e1',
       black: '#000000',
       red: '#d41317',
       white: '#ffffff',
-      green: '#499557',
+      green: '#51a661',
       lightnavy: '#566393',
       darkgreen: '#3e804a',
       brightorange: '#ffc824',
       golden: '#FFD700',
+      orange: '#ff590d',
+      alittledarkgray: '#e5e5e5',
+      faintblue: '#ebebff',
+      faintgreen: '#ffe5e5',
+      darkergray: '#a6a6a6',
     },
     
     zIndex: {
