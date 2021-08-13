@@ -294,7 +294,7 @@ export class LinkBar extends Component {
         //https://www.youtube.com/watch?v=0i_XWYKfIdY
         if(this.state.url !== undefined && this.state.url.includes('www.youtube.com/watch?v=')) {
             try {
-                let res = await axios.get(`/scrape?v=${this.state.url}&code=${langCode == null ? langCode : this.state.langCode}&timeStart=${this.state.timeMinStart + ":" + this.state.timeSecStart}&timeEnd=${this.state.timeMinEnd + ":" + this.state.timeSecEnd}`)
+                let res = await axios.get(`https://warm-inlet-51238.herokuapp.com/scrape?v=${this.state.url}&code=${langCode == null ? langCode : this.state.langCode}&timeStart=${this.state.timeMinStart + ":" + this.state.timeSecStart}&timeEnd=${this.state.timeMinEnd + ":" + this.state.timeSecEnd}`)
                 
                 this.setState({script: res.data.script, options: res.data.langCodes, timeScript: res.data.timeScript})
                 console.log(res.data.script, res.data.langCodes)
@@ -320,7 +320,7 @@ export class LinkBar extends Component {
         
         if(this.state.url !== undefined && this.state.url.includes('www.youtube.com/watch?v=')) {
             try {
-                let res = await axios.get(`/scrape?v=${this.state.url}&code=en&timeStart=${this.state.timeMinStart + ":" + this.state.timeSecStart}&timeEnd=${this.state.timeMinEnd + ":" + this.state.timeSecEnd}`)
+                let res = await axios.get(`https://warm-inlet-51238.herokuapp.com/scrape?v=${this.state.url}&code=en&timeStart=${this.state.timeMinStart + ":" + this.state.timeSecStart}&timeEnd=${this.state.timeMinEnd + ":" + this.state.timeSecEnd}`)
                 this.setState({script: res.data.script, options: res.data.langCodes, timeScript: res.data.timeScript})
             } catch (error) {
                 console.log(error)
