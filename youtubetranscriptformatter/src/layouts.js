@@ -17,6 +17,7 @@ export class NavBar extends Component {
 
     render() {
         return(
+<<<<<<< HEAD
             
             <div class="w-full bg-white flex justify-center items-center font-sans border-b-2 border-darkgray">
                 <div class="w-11/12 flex grid grid-cols-12">
@@ -50,6 +51,30 @@ export class NavBar extends Component {
                 <div class="w-11/12 flex grid grid-cols-6 py-1">
                     <div class="inline-flex md:items-center space-x-3 whitespace-nowrap text-base col-start-0">
                         <img src={logo} alt="bwdl" class="w-10 h-8"/>
+=======
+            /*
+            <div class="w-full bg-white flex justify-center items-center font-sans">
+                <div class="w-11/12 flex grid grid-cols-12">
+                    <div class = "inline-flex space-x-3 whitespace-nowrap font-medium text-base col-start-0">
+                        <img src={logo} alt="bwdl" class="pt-4 w-14 h-14"/>
+                        <p class = "py-6">YT Transcript <span class = "text-navy">MSTR</span></p>                        
+                    </div>
+                    <div class=" py-6 space-x-12 font-medium text-base col-start-9 col-end-12">
+                        <Link to="/" class = "text-red md:hover:underline">Home</Link>                
+                        <Link to="/Formatter" class = "text-navy md:hover:underline">Formatter</Link>
+                        <Link to="/Generator" class = "text-navy md:hover:underline">Generator</Link>
+                        <Link to="/Contact" class = "text-navy md:hover:underline">Contact</Link>
+                    </div>
+                    
+                </div>
+            </div>
+            */
+
+            <div class="w-full bg-white flex justify-center font-sans">
+                <div class="w-11/12 flex grid grid-cols-6 py-1">
+                    <div class="inline-flex md:items-center space-x-3 whitespace-nowrap text-base col-start-0">
+                        <img src={logo} alt="bwdl" class="w-7 h-7"/>
+>>>>>>> 22a698c96b62e3980f7b7e79d4f66ab4106389eb
                         <h1>YT Transcript <span>MSTR</span></h1>
                     </div>
                     <div class="col-start-6 md:hidden">
@@ -62,6 +87,10 @@ export class NavBar extends Component {
                                 <Link to="/" class = "text-red md:hover:underline">Home</Link>                
                                 <Link to="/Formatter" class = "text-navy md:hover:underline">Formatter</Link>
                                 <Link to="/Generator" class = "text-navy md:hover:underline">Generator</Link>
+<<<<<<< HEAD
+=======
+                                <Link to="/Contact" class = "text-navy md:hover:underline">Contact</Link>
+>>>>>>> 22a698c96b62e3980f7b7e79d4f66ab4106389eb
                             </div> 
                         }
                     </div>
@@ -139,6 +168,87 @@ export class OptionBar extends Component {
 }
 
 
+<<<<<<< HEAD
+=======
+export class IntroBar extends Component {
+
+    state = {
+        url: '',
+    }
+
+    getUrl = event => {
+        this.setState({url: event.target.value})
+    }
+
+    render() {
+        return(            
+            <div class="w-full bg-navy flex flex-col justify-center z-0 items-center">
+                <div class = "font-sans flex flex-col w-6/7 sm:w-6/7 md:w-5/7">       
+                    <h1 class = "text-white text-xl lg:pt-14 lg:text-5xl tracking-wide">Our Services</h1>
+                    <p class = "text-sm sm:pl-1.5 text-white lg:pb-5 lg:pt-6 lg:text-base font-normal lg:leading-loose sm:tracking-wider">Welcome to the most efficient and latest YouTube transcript generator! With just a few clicks, we hope to provide <span class = "text-orange sm:text-xl font-semibold">formatted</span>, <span class = "text-orange sm:text-xl font-semibold">punctuated</span>, and <span class ="text-orange sm:text-xl font-semibold">free</span> transcripts for all languages!</p>
+                    <div class = "grid grid-cols-11 pb-12 flex sm:pl-0.5 sm:pr-0.5 pt-2.5 sm:pb-24 lg:grid-cols-11">
+                        <div class="grid col-start-1 col-end-1 flex items-center justify-center sm:grid-cols-3 border-navy bg-white border-l-2 border-b-2 border-t-2 rounded-l-full lg:col-start-1 lg:col-end-1 lg:py-2.5"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 sm:w-5 col-start-2 col-end-3" fill="none" viewBox="0 0 24 24" stroke="gray"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg></div>
+                        <form class=" col-start-2 col-end-11 border-navy border-b-2 border-t-2 bg-white lg:pl-2 lg:col-start-2 md:col-end-11 lg:py-1.5">
+                            <input placeholder="Enter a Youtube url to start" onChange={this.getUrl} value={this.state.url} class = "text-sm sm:pt-0.5 w-full outline-none bg-white text-lightnavy font-sans text-left"></input>
+                        </form>                  
+                        <Link to={{pathname:`/Formatter/`, search: `?v=${encodeURIComponent(this.state.url)}`}} class="grid border-navy bg-green lg:col-start-11 lg:col-end-12 flex items-center justify-center border-b-2 border-t-2 border-r-2 rounded-r-full text-white focus:outline-none">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 " fill="none" viewBox="0 0 24 24" stroke="white"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                        </Link>
+                    </div>                               
+                </div>
+            </div>
+        )
+    }
+}
+
+// xl:tracking-wide lg:text-xl xl:text-2xl text-navy font-sans text-left lg:pl-2 xl:pl-6 mt-4
+// lg:text-normal lg:text-base lg:tracking-wider md:text-black opacity-80 font-serif text-left lg:pl-2 lg:pr-2 xl:pl-6 xl:pr-6 lg:leading-10
+
+export class OptionBar extends Component {
+    render() {
+        return(
+            <div class = "w-full flex flex-col justify-center items-center mb-6">
+                <div class="w-6/7 h-auto grid grid-rows-3 sm:grid-rows-1 gap-2 -mt-11 sm:px-3 md:w-5/7 sm:grid-cols-11">
+                    <div class = "transform hover:scale-105 flex flex-col rounded-2xl ring-5 ring-darkergray ring-offset-8 bg-gradient-to-br from-gray to-faintblue sm:col-start-1 sm:col-end-4">
+                        <div class = "xl:tracking-wide lg:text-xl xl:text-2xl text-navy font-sans text-left lg:pl-2 xl:pl-6 mt-4">Formatter</div>
+                        <div class = "lg:text-normal lg:text-base lg:tracking-wider md:text-black opacity-80 font-serif text-left lg:pl-2 lg:pr-2 xl:pl-6 xl:pr-6 lg:leading-6">Extract and format videos' automatically captioned transcripts using modern web scraping technology and advanced algorithms.</div>
+                        <div class = "grid sm:grid-cols-4 sm:mr-5">
+                            <Link to={{pathname:`/Formatter`}} class = "col-start-5 absolute right-4 bottom-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="transform hover:scale-125 h-11 w-11" fill="none" viewBox="0 0 24 24" stroke="green"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            </Link>
+                        </div>
+                    </div>
+
+                    <div class = "transform hover:scale-105 flex flex-col rounded-2xl ring-5 ring-darkergray ring-offset-8 bg-gradient-to-br from-gray to-faintblue sm:col-start-5 sm:col-end-8">
+                        <div class = "xl:tracking-wide lg:text-xl xl:text-2xl text-navy font-sans text-left lg:pl-2 xl:pl-6 mt-4">Generator</div>
+                        <div class = "lg:text-normal lg:text-base lg:tracking-wider md:text-black opacity-80 font-serif text-left lg:pl-2 lg:pr-2 xl:pl-6 xl:pr-6 lg:leading-6">Generate transcripts of videos or audios using a progressive speech recognition algorithm trained by machine learning technology.</div>
+                        <div class = "grid sm:grid-cols-4 sm:mr-5 py-4">
+                            <p>&nbsp;</p>
+                            <Link to={{pathname:`/Generator`}} class = "col-start-5 absolute right-4 bottom-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="transform hover:scale-125 h-11 w-11" fill="none" viewBox="0 0 24 24" stroke="green"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            </Link>
+                        </div>
+                    </div>
+
+                    <div class = "transform hover:scale-105 flex flex-col rounded-2xl ring-5 ring-darkergray ring-offset-8 bg-gradient-to-br from-gray to-faintblue sm:col-start-9 sm:col-end-12">
+                        <div class = "xl:tracking-wide lg:text-xl xl:text-2xl text-navy font-sans text-left lg:pl-2 xl:pl-6 mt-4">Punctuator</div>
+                        <div class = "lg:text-normal lg:text-base lg:tracking-wider md:text-black opacity-80 font-serif text-left lg:pl-2 lg:pr-2 xl:pl-6 xl:pr-6 lg:leading-6">Add punctuations to transcript using a bidirectional recurrent neural network model with attention mechanism. Comming Soon!</div>
+                        <div class = "grid sm:grid-cols-4 sm:mr-5 py-4">
+                            <p>&nbsp;</p>
+                            <Link to={{pathname:`/Formatter`}} class = "col-start-5 absolute right-4 bottom-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="transform hover:scale-125 h-11 w-11" fill="none" viewBox="0 0 24 24" stroke="green"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            </Link>
+                        </div>
+                    </div>
+     
+                </div>
+            </div>
+        )
+    }
+}
+
+
+>>>>>>> 22a698c96b62e3980f7b7e79d4f66ab4106389eb
 /*
 <div class = "mt-6 transform hover:scale-105 rounded-2xl ring-5 ring-darkergray ring-offset-8 bg-gradient-to-br from-gray to-faintblue sm:mt-0 sm:col-start-5 sm:col-end-8">
                         <div class = "xl:tracking-wide lg:text-xl xl:text-2xl text-navy font-sans text-left lg:pl-2 xl:pl-6 mt-4">Generator</div>
@@ -195,6 +305,10 @@ export const OptionBar = () => {
                         &nbsp;
                     </div>
                 </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 22a698c96b62e3980f7b7e79d4f66ab4106389eb
                 <div class="w-full">
                     <div class = "shadow-2xl bg-gray md:text-normal md:text-2xl md:text-navy font-sans text-left break-all lg:pl-10 lg:pt-8 md:pb-3 md:pl-5 md:pt-4">Transcript <br/> Generator</div>
                     <div class = "box-content md:h-40 bg-gray md:text-normal md:text-base md:text-black font-sans text-left lg:pl-10 lg:pr-10 md:pl-5 md:pr-5"><span class="opacity-60">Get formatted youtube video transcripts on the fly!</span></div>
@@ -205,6 +319,10 @@ export const OptionBar = () => {
                         &nbsp;
                     </div>
                 </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 22a698c96b62e3980f7b7e79d4f66ab4106389eb
                 <div class="w-full">
                     <div class = "shadow-2xl bg-gray md:text-normal md:text-2xl md:text-navy font-sans text-left break-all lg:pl-10 lg:pt-8 md:pb-3 md:pl-5 md:pt-4">Not <br/> Sure?</div>
                     <div class = "box-content md:h-40 bg-gray md:text-normal md:text-base md:text-black font-sans text-left lg:pl-10 lg:pr-10 md:pl-5 md:pr-5"><span class="opacity-60">Answers to all of your questions about YT Transcript.</span></div>
@@ -329,7 +447,11 @@ export class LinkBar extends Component {
 
 
         return(
+<<<<<<< HEAD
             <div class = "w-full h-full flex justify-center bg-white items-center">
+=======
+            <div class = "w-full h-full flex justify-center items-center bg-gray py-8">
+>>>>>>> 22a698c96b62e3980f7b7e79d4f66ab4106389eb
                 <div class="w-6/7 md:w-1/2 flex flex-col">
                     <h1 class = "flex text-navy md:pt-4 md:text-5xl font-sans">Formatter</h1>
                     <div class = "w-full grid md:grid-cols-12 flex md:pt-10">
@@ -430,6 +552,16 @@ export class SelectMenu extends Component {
 }
 
 export class PopField extends Component {
+<<<<<<< HEAD
+
+    state = {
+        visible: false,
+        minStart: "",
+        secStart: "",
+        minEnd: "",
+        secEnd: "",
+    }
+=======
 
     state = {
         visible: false,
@@ -496,6 +628,152 @@ export class PopField extends Component {
                         </div>
                     </form>
 
+                    :null
+                }
+
+            </div>
+        )
+    }
+}
+
+export const Donate = () => {
+    return(
+        <div class = "animate-bounce right-4 top-2/3 fixed">
+            <a href="https://www.paypal.com/donate?business=MUWKCB7DD7VU4&no_recurring=0&item_name=Support+us+in+keeping+our+services+up%21&currency_code=USD" target="_blank" rel="noopener noreferrer" class="focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 hover:opacity-70" fill="none" viewBox="0 0 24 24" stroke="#ffc824">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <h1 class="text-brightorange tracking-wide font-bold">Donate</h1>
+            </a>     
+        </div>
+    )
+}
+
+export class ContactBar extends Component {
+>>>>>>> 22a698c96b62e3980f7b7e79d4f66ab4106389eb
+
+    getTimeMinStart = event => {
+        this.setState({minStart: event.target.value})
+        this.props.timeData.minStart(event.target.value)
+    }
+
+<<<<<<< HEAD
+    getTimeSecStart = event =>  {
+        this.setState({secStart: event.target.value})
+        this.props.timeData.secStart(event.target.value)
+    }
+
+    getTimeMinEnd = event => {
+        this.setState({minEnd: event.target.value})
+        this.props.timeData.minEnd(event.target.value)
+    }
+=======
+    render() {
+
+        function sendEmail(e) {
+            e.preventDefault();
+        
+            emailjs.sendForm('service_2xe76ee', 'template_13o76vt', e.target, 'user_BX1qZ60jG2ZkkJfk6omb0')
+              .then((result) => {
+                  console.log(result.text);
+              }, (error) => {
+                  console.log(error.text);
+              });
+          }
+>>>>>>> 22a698c96b62e3980f7b7e79d4f66ab4106389eb
+
+    getTimeSecEnd = event => {
+        this.setState({secEnd: event.target.value})
+        this.props.timeData.secEnd(event.target.value)
+    }
+
+<<<<<<< HEAD
+    handleVisibility = () => {
+        this.setState({visible: !this.state.visible})
+    }
+    
+    render() {
+        return(
+            <div class="w-full flex flex-col justify-center items-center">
+=======
+        return(
+            <div class="w-full flex justify-center items-center">
+                <form class="pt-3 sm:pt-24 pb-2 w-6/7 sm:w-full max-w-lg pl-1/2" onSubmit={sendEmail}>
+                    <div class="flex flex-wrap -mx-3 mb-6">
+                        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                            <label class="opacity-90 block uppercase tracking-wide text-black text-xs font-bold mb-2" for="grid-first-name">
+                            First Name
+                            </label>
+                            <input name="fname" class="appearance-none block w-full text-black opacity-80 border rounded py-2.5 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder=""></input>
+                            
+                        </div>
+                        <div class="w-full md:w-1/2 px-3">
+                            <label class="opacity-90 block uppercase tracking-wide text-black text-xs font-bold mb-2" for="grid-last-name">
+                            Last Name
+                            </label>
+                            <input name="lname" class="appearance-none block w-full  opacity-80 text-black border border-black rounded py-2.5 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder=""></input>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap -mx-3 mb-6">
+                        <div class="w-full px-3">
+                            <label class="opacity-90 block uppercase tracking-wide text-black text-xs font-bold mb-2" for="grid-password">
+                            E-mail
+                            </label>
+                            <input name="email" class="appearance-none block w-full opacity-80 text-black border border-black rounded py-2.5 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="email" type="email"></input>
+                            
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap -mx-3 mb-6">
+                        <div class="w-full px-3">
+                            <label class="block uppercase tracking-wide text-black text-xs font-bold mb-2 opacity-90" for="grid-password">
+                            Message
+                            </label>
+                            <textarea name="msg" class=" no-resize appearance-none opacity-80 block w-full text-black border border-black rounded py-2.5 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 h-48 resize-none" id="message"></textarea>
+                            
+                        </div>
+                    </div>
+                    <div class="md:flex md:items-center">
+                        <div class="md:w-1/3">
+                            <input type="submit" value="Send" class="shadow bg-green hover:bg-darkgreen focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"></input>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        )
+    }
+}
+>>>>>>> 22a698c96b62e3980f7b7e79d4f66ab4106389eb
+
+                <button class={this.props.btnStyle} onClick={this.handleVisibility}>
+                    <span>Time</span>
+                </button>
+
+                {
+                    this.state.visible ?
+
+                    <form class="w-1/5 shadow-2xl max-h-36 z-20 flex flex-col justify-center bg-white absolute pl-1 mb-24">
+                        <div class="divid-x text-center w-full bg-green grid grid-cols-2">
+                            <label class="border-r">Start</label>
+                            <label class="border-l">End</label>
+                        </div>
+                        
+                        <div class="w-full grid grid-cols-2 text-black bg-white">
+                            <div class="grid grid-cols-10 border-r border-green">
+                                <input placeholder="00" type="text" min="0" max="99" maxLength="2" inputmode="numeric" value={this.state.minStart} onChange={this.getTimeMinStart} class="col-start-1 col-end-5 text-center focus:outline-none"></input>
+                                <h1 class="col-start-5 col-end-6 text-center text-darkgray bg-white">:</h1>
+                                <input placeholder="00" type="text" min="0" max="99" maxlength="2" inputmode="numeric" value={this.state.secStart} onChange={this.getTimeSecStart} class="col-start-6 col-end-10 text-center focus:outline-none"></input>
+                            </div>
+
+                            <div class="border-l border-green grid grid-cols-8">
+                                <input placeholder="00" type="text" min="0" max="99" maxlength="2" inputmode="numeric" value={this.state.minEnd} onChange={this.getTimeMinEnd} class="col-start-1 col-end-4 text-center focus:outline-none"></input>
+                                <h1 class="col-start-4 col-end-5 text-center text-darkgray bg-white">:</h1>
+                                <input placeholder="00" type="text" min="0" max="99" maxlength="2" inputmode="numeric" value={this.state.secEnd} onChange={this.getTimeSecEnd} class="col-start-5 col-end-8 text-center focus:outline-none"></input>
+                            </div>
+                            
+                        </div>
+                    </form>
+
+<<<<<<< HEAD
                     :null
                 }
 
@@ -581,6 +859,9 @@ export class ContactBar extends Component {
 
 
 /*export const CopyRight = () => {
+=======
+export const CopyRight = () => {
+>>>>>>> 22a698c96b62e3980f7b7e79d4f66ab4106389eb
     return(
         <div class = "right-4 bottom-2.5 fixed">
             <p class="text-darkgreen opacity-85 text-xs font-sans font-normal tracking-tight">
@@ -588,4 +869,8 @@ export class ContactBar extends Component {
             </p>                
         </div>
     )
+<<<<<<< HEAD
 }*/
+=======
+}
+>>>>>>> 22a698c96b62e3980f7b7e79d4f66ab4106389eb
