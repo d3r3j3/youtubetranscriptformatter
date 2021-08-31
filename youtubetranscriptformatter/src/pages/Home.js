@@ -1,9 +1,5 @@
 import React from 'react';
-<<<<<<< HEAD
 import {NavBar, IntroBar, OptionBar} from '../layouts.js';
-=======
-import {NavBar, IntroBar, OptionBar, Donate, CopyRight} from '../layouts.js';
->>>>>>> 22a698c96b62e3980f7b7e79d4f66ab4106389eb
 
 function Home() {
 
@@ -12,13 +8,8 @@ function Home() {
       <NavBar/>  
       <IntroBar />
       <OptionBar />
-<<<<<<< HEAD
       
       
-=======
-      <CopyRight />
-      <Donate />
->>>>>>> 22a698c96b62e3980f7b7e79d4f66ab4106389eb
     </div>
   );
 }
