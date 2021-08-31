@@ -12,6 +12,8 @@ function Generator() {
         <div class="w-full grid grid-rows flex justify-center items-center">
             <NavBar />
             <IntroBar title={data.title} info={data.info} />
+            
+            
         </div>
     );
 }

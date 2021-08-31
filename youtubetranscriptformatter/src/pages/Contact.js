@@ -1,17 +1,18 @@
 import React from 'react';
-import {NavBar, ContactBar,LinkBar} from '../layouts.js';
+import {NavBar, ContactBar} from '../layouts'
 
 
-function Contact() {
+function Generator() {
     return(
-        <div class = "w-screen grid flex bg-gray">
-            <NavBar/>
-            <LinkBar/>
-            <ContactBar/>
-             
-                     
+        <div class="w-full grid grid-rows flex justify-center items-center">
+            <NavBar />
+            <ContactBar />
+            
+            <div class="w-full h-full bg-gray fixed -z-10">
+                &nbsp;
+            </div>
         </div>
     );
 }
 
-export default Contact;
+export default Generator;
