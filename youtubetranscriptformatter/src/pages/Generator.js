@@ -1,5 +1,5 @@
 import React from 'react';
-import {NavBar, IntroBar, Donate, CopyRight} from '../layouts'
+import {NavBar, IntroBar} from '../layouts'
 
 const data = {
     title: "Transcript Generator",
