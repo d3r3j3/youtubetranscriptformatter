@@ -90,7 +90,7 @@ export class IntroBar extends Component {
 
     render() {
         return(            
-            <div class="w-full bg-navy flex flex-col justify-center z-0 items-center">
+            <div class="w-full bg-navy flex justify-center z-0 items-center">
                 <div class = "font-sans flex flex-col w-10/12 sm:w-3/4 lg:w-4/7">       
                     <h1 class = "text-white text-xl pt-8 sm:pt-14 lg:pt-16 text-3xl sm:text-4xl lg:text-5xl tracking-wide">Our Services</h1>
                     <p class = "text-sm pl-1 sm:pl-1.5 text-white pt-5 sm:pt-7 lg:pb-5 lg:pt-7 lg:text-base font-normal leading-loose sm:leading-loose lg:leading-loose sm:tracking-wider">Welcome to the most efficient and latest YouTube transcript generator! With just a few clicks, we hope to provide <span class = "text-orange sm:text-xl font-semibold">formatted</span>, <span class = "text-orange sm:text-xl font-semibold">punctuated</span>, and <span class ="text-orange sm:text-xl font-semibold">free</span> transcripts for all languages!</p>
