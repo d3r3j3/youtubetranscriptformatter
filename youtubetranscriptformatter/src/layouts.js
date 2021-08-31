@@ -54,13 +54,13 @@ export const OptionBar = () => {
                 <div class = "box-content md:h-40 bg-gray md:text-normal md:text-base md:text-black font-sans text-left lg:pl-10 lg:pr-10 md:pl-5 md:pr-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
                 <div class = "box-content md:h-40 bg-gray md:text-normal md:text-base md:text-black font-sans text-left lg:pl-10 lg:pr-10 md:pl-5 md:pr-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
                 <div class = "md:h-16 bg-gray grid md:grid-cols-7 md:grid-rows-3 text-center">
-                    <Link to="/Formatter" class = "shadow-inner pt-2.5 bg-green text-white font-semibold md:row-start-1 md:row-span-2 md:col-start-5 md:col-span-2 rounded-full hover:bg-navy">Go</Link>
+                    <Link to="/Formatter" class = "shadow-inner pt-2.5 bg-green text-white font-semibold md:row-start-1 md:row-span-2 md:col-start-5 md:col-span-2 rounded-full hover:bg-darkgreen">Go</Link>
                 </div>
                 <div class = "md:h-16 bg-gray grid md:grid-cols-7 md:grid-rows-3 text-center">
-                    <Link to="/Generator" class = "shadow-inner pt-2.5 bg-green text-white font-semibold md:row-start-1 md:row-span-2 md:col-start-5 md:col-span-2 rounded-full hover:bg-navy">Go</Link>
+                    <Link to="/Generator" class = "shadow-inner pt-2.5 bg-green text-white font-semibold md:row-start-1 md:row-span-2 md:col-start-5 md:col-span-2 rounded-full hover:bg-darkgreen">Go</Link>
                 </div>
                 <div class = "md:h-16 bg-gray grid md:grid-cols-7 md:grid-rows-3 text-center">
-                    <Link to="/NotSure" class = "shadow-inner pt-2.5 bg-green text-white font-semibold md:row-start-1 md:row-span-2 md:col-start-5 md:col-span-2 rounded-full hover:bg-navy">Go</Link>
+                    <Link to="/NotSure" class = "shadow-inner pt-2.5 bg-green text-white font-semibold md:row-start-1 md:row-span-2 md:col-start-5 md:col-span-2 rounded-full hover:bg-ss">Go</Link>
                 </div>
             </div>                                            
         </div>
@@ -72,7 +72,7 @@ export class LinkBar extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            url:"https://www.youtube.com/watch?v=lwOsI8LtVEQ",
+            url:"",
             script:"",
             langCode:"en",
             options:[]
@@ -99,6 +99,7 @@ export class LinkBar extends Component {
     }
 
     getData = () => {
+        
         axios.get(`/scrape?v=${this.state.url}&code=${this.state.langCode}`).then(res => {
             console.log(res.data.script, res.data.langCodes)
             this.setState({script: res.data.script, options: res.data.langCodes})
@@ -113,21 +114,18 @@ export class LinkBar extends Component {
 
     render() {
         return(
-            <div class = "w-full flex justify-center items-center bg-darkgray shadow-2xl py-10">
-                <div class="w-3/4 flex flex-col">
-                    <h1 class = "flex text-navy md:pt-14 md:text-6xl">Formatter</h1>
-                    <div class="w-full flex grid grid-cols-5 gap-1 md:pb-44 md:pt-5">
-                        <form class="w-full col-start-0 col-span-3 py-0">
-                            <input class="w-full flex bg-gray  rounded-md py-1.5 px-2 " onChange={this.getUrl} value={this.state.url} placeholder="enter url"></input>
-                        </form>
-                        <div class="w-full col-start-4 flex"> 
-                            <SelectMenu opts={this.state.options} passLang={this.getCode}/>
-                        </div>
-                        <div class="w-full col-start-5 flex-initial">
-                            <button class="w-full py-1.5 flex justify-center items-center bg-navy text-white rounded-md focus:outline-none font-bold hover:bg-gray hover:text-navy" onClick={this.getData}>GET</button>
-                        </div>
-                    </div>
-                    
+            <div class = "w-full h-full flex justify-center items-center bg-gray py-8">
+                <div class="w-1/2 flex flex-col">
+                    <h1 class = "flex text-navy md:pt-4 md:text-5xl font-sans">Formatter</h1>
+                    <div class = "w-full grid md:grid-cols-12 flex md:pt-10">
+                        <form class="w-full bg-white border-t-2 border-l-2 border-b-2 border-navy rounded-l md:pl-2 md:col-start-1 md:col-end-11 md:py-1.5">
+                            <input placeholder="Enter Youtube url to start" class = "w-full outline-none bg-white text-lightnavy font-sans text-left"></input>
+                        </form>                    
+                        <div class = "grid md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 2xl:grid-cols-9 w-full bg-white border-t-2 border-r-2 border-b-2 rounded-r border-navy md:col-start-11 md:col-end-13 md:py-1.5">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="md:col-start-2 md:col-end-3 lg:col-start-3 lg:col-end-4 xl:col-start-5 xl:col-end-6 2xl:col-start-6 2xl:col-end-7 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="green"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="md:col-start-4 md:col-end-5 lg:col-start-5 lg:col-end-6 xl:col-start-7 xl:col-end-8 2xl:col-start-8 2xl:col-end-9 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="navy"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12" /></svg>
+                        </div>           
+                    </div>                    
                 </div>
                 {FormatterBar(this.state.script, this.setScript, this.clearScript)}
             </div>
@@ -144,21 +142,17 @@ export const FormatterBar = (script, setScript, clearScript) => {
     }
 
     return(
-       
-        <div class="w-3/4 flex grid grid-cols-2 md:py-1 absolute md:top-80">
-            <div class = "text-lightnavy bg-white md:pl-2 md:pr-2 md:pt-2 border-t-2 border-l-2 border-navy border-r-2 rounded-tl-md md:h-80 font-sans text-left">
+        <div class="w-1/2 md:top-70 grid-cols-12 absolute">
+            <div class = "md:col-start-1 md:col-end-12 bg-white md:pl-2 md:pr-2 md:pt-2 border-t-2 border-l-2 border-navy border-r-2 rounded-t-md md:h-80 font-sans text-left">
                 <textarea class="bg-white w-full h-full resize-none focus:outline-none" onChange={setScript} value={script} rows="12" placeholder="Can Edit"></textarea>
-            </div>
-            <div class = "text-lightnavy bg-white md:pl-2 md:pr-2 md:pt-2 border-t-2 border-r-2 border-navy rounded-tr-md md:h-80 font-sans text-left">
-                <textarea ref={(textarea) => textArea = textarea} readonly class="w-full h-full bg-white overflow-y-auto resize-none focus:outline-none " value={script}></textarea>
-            </div>
-            <div class="flex bg-darkgray grid grid-cols-4 border-l-2 border-navy rounded-bl-md text-white">
-                <button onClick={clearScript} class="bg-navy col-span-2 font-bold focus:outline-none hover:text-navy hover:bg-gray rounded-bl-md">Clear</button>
-        
-            </div>
-            <div class="flex bg-darkgray grid grid-cols-4 border-r-2 border-navy rounded-br-md text-white">
-                <button class="col-start-3 bg-navy font-bold focus:outline-none hover:text-navy hover:bg-gray border-r-2 border-gray">Punctuate</button>
-                <button onClick={copyToClipBoard} class="bg-navy font-bold focus:outline-none hover:text-navy hover:bg-gray rounded-br-md">Copy</button>
+            </div>            
+            <div class = "grid grid-rows-6 grid-cols-11 shadow-xl bg-white shadow-md border-b-2 border-l-2 border-r-2 border-navy rounded-1 md:col-start-7 md:col-end-11 md:h-12 font-sans rounded-b-md">
+                <div class = "text-white font-semibold shadow-inner inline-flex grid grid-rows-5 divide-x-2 row-start-1 row-end-6 lg:col-start-2 lg:col-end-11 md:col-start-2 md:col-end-11 bg-green rounded-full">
+                    <button class = "row-start-2 row-end-5">Language</button>
+                    <button class = "row-start-2 row-end-5">Time</button>
+                    <button class = "row-start-2 row-end-5">Punctuate</button>
+                    <button class = "row-start-2 row-end-5">Copy</button>
+                </div>
             </div>
         </div>       
         
@@ -214,6 +208,17 @@ export class SelectMenu extends Component {
         )
     }
     
+}
+
+export class ContactBar extends Component {
+    render() {
+        return(
+            <div class = "w-full grid md:grid-cols-12 flex">
+                <p class = "md:col-start-4 md:col-span-4 bg-red h-20"></p>
+                          
+            </div>
+        )
+    }
 }
 
 

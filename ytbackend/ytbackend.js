@@ -9,7 +9,9 @@ let getReq = async (url, lang) => {
     try {
         let promise = await fetch(url, {mode:'no-cors'})
         if(promise) {
+
             let data = await promise.text()
+            console.log(data)
             let formattedData = data.replace(/\\u0026/g, '&').replace(/\\/g, '')
             let n = formattedData.search("captionTracks")
             if(n > -1) {
@@ -41,6 +43,8 @@ let getReq = async (url, lang) => {
                 console.log("Caption DNE")
             }
             
+        } else {
+            console.log("Error")
         }
     } catch (error) {
         console.log(error.message)
