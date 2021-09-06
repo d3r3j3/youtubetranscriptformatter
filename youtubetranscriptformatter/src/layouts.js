@@ -24,7 +24,7 @@ export class NavBar extends Component {
                         <img src={logo} alt="bwdl" class=" mt-5 w-8 h-6 sm:mt-6 lg:mt-5 sm:w-8 sm:h-6 lg:w-10 lg:h-8"/>
                         <p class = "py-5 sm:py-6 lg:py-6">YT Transcript <span class = "text-navy">MSTR</span></p>                        
                     </div>
-                    <div class="hidden sm:hidden lg:flex lg:py-6 lg:space-x-10 xl:space-x-12 lg:font-medium lg:text-base lg:col-start-9 xl:col-start-10 lg:col-end-12">
+                    <div class="hidden sm:hidden lg:flex lg:py-6 lg:space-x-10 xl:space-x-10 2xl:space-x-12 lg:font-medium lg:text-base lg:col-start-9 xl:col-start-10 lg:col-end-12">
                         <Link to="/" class = "lg:text-red lg:hover:underline">Home</Link>                
                         <Link to="/Formatter" class = "lg:text-navy lg::hover:underline">Formatter</Link>
                         <Link to="/Generator" class = "lg:text-navy lg:hover:underline">Generator</Link>
@@ -35,11 +35,11 @@ export class NavBar extends Component {
                         </button>
                         {
                             !this.state.status ? null : 
-                            <select class="pointer-events-auto pt-6 mr-4 flex flex-col">
-                                <option class = "text-red md:hover:underline">Home</option>              
-                                <option class = "text-navy md:hover:underline">Formatter</option>
-                                <option class = "text-navy md:hover:underline">Generator</option>
-                            </select> 
+                            <div class="pointer-events-auto pt-2 px-2 right-0 flex flex-col float-left absolute z-10 bg-white">
+                                <Link to="/" class = "text-red md:hover:underline">Home</Link>            
+                                <Link to="/Formatter" class = "text-navy md:hover:underline">Formatter</Link>
+                                <Link to="/Generator" class = "text-navy md:hover:underline">Generator</Link>
+                            </div> 
                         }
                     </div>                    
                 </div>
