@@ -1,5 +1,5 @@
 import React from 'react';
-import {NavBar, IntroBar, OptionBar, Donate, CopyRight} from '../layouts.js';
+import {NavBar, IntroBar, OptionBar} from '../layouts.js';
 
 function Home() {
 
@@ -8,8 +8,8 @@ function Home() {
       <NavBar/>  
       <IntroBar />
       <OptionBar />
-      <CopyRight />
-      <Donate />
+      
+      
     </div>
   );
 }

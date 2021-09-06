@@ -17,28 +17,39 @@ export class NavBar extends Component {
 
     render() {
         return(
-            /*
-            <div class="w-full bg-white flex justify-center items-center font-sans">
+            
+            <div class="w-full bg-white flex justify-center items-center font-sans border-b-2 border-darkgray">
                 <div class="w-11/12 flex grid grid-cols-12">
                     <div class = "inline-flex space-x-3 whitespace-nowrap font-medium text-base col-start-0">
-                        <img src={logo} alt="bwdl" class="pt-4 w-14 h-14"/>
-                        <p class = "py-6">YT Transcript <span class = "text-navy">MSTR</span></p>                        
+                        <img src={logo} alt="bwdl" class=" mt-5 w-8 h-6 sm:mt-6 lg:mt-5 sm:w-8 sm:h-6 lg:w-10 lg:h-8"/>
+                        <p class = "py-5 sm:py-6 lg:py-6">YT Transcript <span class = "text-navy">MSTR</span></p>                        
                     </div>
-                    <div class=" py-6 space-x-12 font-medium text-base col-start-9 col-end-12">
-                        <Link to="/" class = "text-red md:hover:underline">Home</Link>                
-                        <Link to="/Formatter" class = "text-navy md:hover:underline">Formatter</Link>
-                        <Link to="/Generator" class = "text-navy md:hover:underline">Generator</Link>
-                        <Link to="/Contact" class = "text-navy md:hover:underline">Contact</Link>
+                    <div class="hidden sm:hidden lg:flex lg:py-6 lg:space-x-10 xl:space-x-12 lg:font-medium lg:text-base lg:col-start-9 xl:col-start-10 lg:col-end-12">
+                        <Link to="/" class = "lg:text-red lg:hover:underline">Home</Link>                
+                        <Link to="/Formatter" class = "lg:text-navy lg::hover:underline">Formatter</Link>
+                        <Link to="/Generator" class = "lg:text-navy lg:hover:underline">Generator</Link>
                     </div>
-                    
+                    <div class="col-start-12 lg:hidden">
+                        <button onClick={this.showMenu} class="mt-5 focus:outline-none">
+                            <img src="https://img.icons8.com/material-outlined/24/000000/menu--v3.png" alt="mnu"/>
+                        </button>
+                        {
+                            !this.state.status ? null : 
+                            <select class="pointer-events-auto pt-6 mr-4 flex flex-col">
+                                <option class = "text-red md:hover:underline">Home</option>              
+                                <option class = "text-navy md:hover:underline">Formatter</option>
+                                <option class = "text-navy md:hover:underline">Generator</option>
+                            </select> 
+                        }
+                    </div>                    
                 </div>
             </div>
-            */
+            
 
-            <div class="w-full bg-white flex justify-center font-sans">
+            /*<div class="w-full bg-white flex justify-center font-sans">
                 <div class="w-11/12 flex grid grid-cols-6 py-1">
                     <div class="inline-flex md:items-center space-x-3 whitespace-nowrap text-base col-start-0">
-                        <img src={logo} alt="bwdl" class="w-7 h-7"/>
+                        <img src={logo} alt="bwdl" class="w-10 h-8"/>
                         <h1>YT Transcript <span>MSTR</span></h1>
                     </div>
                     <div class="col-start-6 md:hidden">
@@ -51,7 +62,6 @@ export class NavBar extends Component {
                                 <Link to="/" class = "text-red md:hover:underline">Home</Link>                
                                 <Link to="/Formatter" class = "text-navy md:hover:underline">Formatter</Link>
                                 <Link to="/Generator" class = "text-navy md:hover:underline">Generator</Link>
-                                <Link to="/Contact" class = "text-navy md:hover:underline">Contact</Link>
                             </div> 
                         }
                     </div>
@@ -59,11 +69,10 @@ export class NavBar extends Component {
                         <Link to="/" class = "text-red md:hover:underline">Home</Link>                
                         <Link to="/Formatter" class = "text-navy md:hover:underline">Formatter</Link>
                         <Link to="/Generator" class = "text-navy md:hover:underline">Generator</Link>
-                        <Link to="/Contact" class = "text-navy md:hover:underline">Contact</Link>
                     </div>
                     
                 </div>
-            </div>
+            </div>*/
         )
     }
 }
@@ -81,16 +90,16 @@ export class IntroBar extends Component {
 
     render() {
         return(            
-            <div class="w-full bg-navy flex flex-col justify-center z-0 items-center">
-                <div class = "font-sans flex flex-col w-6/7 sm:w-6/7 md:w-5/7">       
-                    <h1 class = "text-white text-xl lg:pt-14 lg:text-5xl tracking-wide">Our Services</h1>
-                    <p class = "text-sm sm:pl-1.5 text-white lg:pb-5 lg:pt-6 lg:text-base font-normal lg:leading-loose sm:tracking-wider">Welcome to the most efficient and latest YouTube transcript generator! With just a few clicks, we hope to provide <span class = "text-orange sm:text-xl font-semibold">formatted</span>, <span class = "text-orange sm:text-xl font-semibold">punctuated</span>, and <span class ="text-orange sm:text-xl font-semibold">free</span> transcripts for all languages!</p>
-                    <div class = "grid grid-cols-11 pb-12 flex sm:pl-0.5 sm:pr-0.5 pt-2.5 sm:pb-24 lg:grid-cols-11">
-                        <div class="grid col-start-1 col-end-1 flex items-center justify-center sm:grid-cols-3 border-navy bg-white border-l-2 border-b-2 border-t-2 rounded-l-full lg:col-start-1 lg:col-end-1 lg:py-2.5"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 sm:w-5 col-start-2 col-end-3" fill="none" viewBox="0 0 24 24" stroke="gray"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg></div>
-                        <form class=" col-start-2 col-end-11 border-navy border-b-2 border-t-2 bg-white lg:pl-2 lg:col-start-2 md:col-end-11 lg:py-1.5">
-                            <input placeholder="Enter a Youtube url to start" onChange={this.getUrl} value={this.state.url} class = "text-sm sm:pt-0.5 w-full outline-none bg-white text-lightnavy font-sans text-left"></input>
+            <div class="w-full bg-navy flex justify-center z-0 items-center">
+                <div class = "font-sans flex flex-col w-10/12 sm:w-3/4 lg:w-4/7">       
+                    <h1 class = "text-white text-xl pt-8 sm:pt-14 lg:pt-16 text-3xl sm:text-4xl lg:text-5xl tracking-wide">Our Services</h1>
+                    <p class = "text-sm pl-1 sm:pl-1.5 text-white pt-5 sm:pt-7 lg:pb-5 lg:pt-7 lg:text-base font-normal leading-loose sm:leading-loose lg:leading-loose sm:tracking-wider">Welcome to the most efficient and latest YouTube transcript generator! With just a few clicks, we hope to provide <span class = "text-orange sm:text-xl font-semibold">formatted</span>, <span class = "text-orange sm:text-xl font-semibold">punctuated</span>, and <span class ="text-orange sm:text-xl font-semibold">free</span> transcripts for all languages!</p>
+                    <div class = "pb-28 pt-7 pl-0.5 pr-0.5 sm:pt-10 grid grid-cols-11 sm:pb-16 flex sm:pl-0.5 sm:pr-0.5 lg:pt-3 sm:pb-36 lg:pb-24 lg:grid-cols-11">
+                        <div class="grid col-start-1 col-end-1 flex items-center justify-center sm:grid-cols-3 border-navy bg-white border-l-2 border-b-2 border-t-2 rounded-l-full lg:col-start-1 lg:col-end-1 py-1.5 sm:py-2 lg:py-2.5"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 sm:w-5 col-start-2 col-end-3" fill="none" viewBox="0 0 24 24" stroke="gray"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg></div>
+                        <form class="col-start-2 col-end-10 sm:col-end-11 border-navy border-b-2 border-t-2 bg-white pl-2 lg:pl-2 lg:col-start-2 md:col-end-11 pt-0.75 sm:pt-1.5 lg:pt-2 lg:pb-1.5">
+                            <input placeholder="Enter a Youtube url to start" onChange={this.getUrl} value={this.state.url} class = "text-sm sm:text-md lg:text-base w-full outline-none bg-white text-lightnavy font-sans text-left"></input>
                         </form>                  
-                        <Link to={{pathname:`/Formatter/`, search: `?v=${encodeURIComponent(this.state.url)}`}} class="grid border-navy bg-green lg:col-start-11 lg:col-end-12 flex items-center justify-center border-b-2 border-t-2 border-r-2 rounded-r-full text-white focus:outline-none">
+                        <Link to={{pathname:`/Formatter/`, search: `?v=${encodeURIComponent(this.state.url)}`}} class="grid border-navy bg-green col-start-10 col-end-12 sm:col-start-11 sm:col-end-12 lg:col-start-11 lg:col-end-12 flex items-center justify-center border-b-2 border-t-2 border-r-2 rounded-r-full text-white focus:outline-none">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 " fill="none" viewBox="0 0 24 24" stroke="white"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                         </Link>
                     </div>                               
@@ -107,37 +116,20 @@ export class OptionBar extends Component {
     render() {
         return(
             <div class = "w-full flex flex-col justify-center items-center mb-6">
-                <div class="w-6/7 h-auto grid grid-rows-3 sm:grid-rows-1 gap-2 -mt-11 sm:px-3 md:w-5/7 sm:grid-cols-11">
-                    <div class = "transform hover:scale-105 flex flex-col rounded-2xl ring-5 ring-darkergray ring-offset-8 bg-gradient-to-br from-gray to-faintblue sm:col-start-1 sm:col-end-4">
-                        <div class = "xl:tracking-wide lg:text-xl xl:text-2xl text-navy font-sans text-left lg:pl-2 xl:pl-6 mt-4">Formatter</div>
-                        <div class = "lg:text-normal lg:text-base lg:tracking-wider md:text-black opacity-80 font-serif text-left lg:pl-2 lg:pr-2 xl:pl-6 xl:pr-6 lg:leading-6">Extract and format videos' automatically captioned transcripts using modern web scraping technology and advanced algorithms.</div>
-                        <div class = "grid sm:grid-cols-4 sm:mr-5">
-                            <Link to={{pathname:`/Formatter`}} class = "col-start-5 absolute right-4 bottom-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="transform hover:scale-125 h-11 w-11" fill="none" viewBox="0 0 24 24" stroke="green"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                            </Link>
-                        </div>
+                <div class="pb-11 sm:pb-0 space-y-11 sm:space-y-11 lg:space-y-0 w-10/12 sm:w-3/4 h-auto grid lg:grid-rows-1 gap-2 -mt-16 sm:-mt-20 lg:-mt-9 px-3 sm:px-3 lg:w-4/7 sm:grid-cols-11">
+                    <div class = "transform hover:scale-105 flex flex-col rounded-2xl ring-5 ring-darkergray ring-offset-8 bg-gradient-to-br from-gray to-faintblue sm:col-start-1 sm:col-end-12 lg:col-start-1 lg:col-end-4">
+                        <div class = "xl:tracking-wide lg:text-xl xl:text-2xl text-navy font-sans text-left pl-2 sm:pl-2 lg:pl-2 xl:pl-6 mt-3 sm:mt-4">Formatter</div>
+                        <div class = "mt-1.5 mb-4 sm:mt-2 sm:mb-5 lg:text-normal lg:text-base lg:tracking-wider md:text-black opacity-80 font-serif text-left pl-2 pr-2 sm:pl-2 sm:pr-2 lg:pl-2 lg:pr-2 xl:pl-6 xl:pr-6 lg:leading-6">Extract and format videos' automatically captioned transcripts using modern web scraping technology and advanced algorithms.</div>
                     </div>
 
-                    <div class = "transform hover:scale-105 flex flex-col rounded-2xl ring-5 ring-darkergray ring-offset-8 bg-gradient-to-br from-gray to-faintblue sm:col-start-5 sm:col-end-8">
-                        <div class = "xl:tracking-wide lg:text-xl xl:text-2xl text-navy font-sans text-left lg:pl-2 xl:pl-6 mt-4">Generator</div>
-                        <div class = "lg:text-normal lg:text-base lg:tracking-wider md:text-black opacity-80 font-serif text-left lg:pl-2 lg:pr-2 xl:pl-6 xl:pr-6 lg:leading-6">Generate transcripts of videos or audios using a progressive speech recognition algorithm trained by machine learning technology.</div>
-                        <div class = "grid sm:grid-cols-4 sm:mr-5 py-4">
-                            <p>&nbsp;</p>
-                            <Link to={{pathname:`/Generator`}} class = "col-start-5 absolute right-4 bottom-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="transform hover:scale-125 h-11 w-11" fill="none" viewBox="0 0 24 24" stroke="green"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                            </Link>
-                        </div>
+                    <div class = "transform hover:scale-105 flex flex-col rounded-2xl ring-5 ring-darkergray ring-offset-8 bg-gradient-to-br from-gray to-faintblue sm:col-start-1 sm:col-end-12 lg:col-start-5 lg:col-end-8">
+                        <div class = "xl:tracking-wide lg:text-xl xl:text-2xl text-navy font-sans text-left pl-2 sm:pl-2 lg:pl-2 xl:pl-6 mt-3 sm:mt-4">Generator</div>
+                        <div class = "mt-1.5 mb-4 sm:mt-2 sm:mb-5 lg:text-normal lg:text-base lg:tracking-wider md:text-black opacity-80 font-serif text-left pl-2 pr-2 sm:pl-2 sm:pr-2 lg:pl-2 lg:pr-2 xl:pl-6 xl:pr-6 lg:leading-6">Generate transcripts of videos or audios using a progressive speech recognition algorithm trained by machine learning technology.</div>
                     </div>
 
-                    <div class = "transform hover:scale-105 flex flex-col rounded-2xl ring-5 ring-darkergray ring-offset-8 bg-gradient-to-br from-gray to-faintblue sm:col-start-9 sm:col-end-12">
-                        <div class = "xl:tracking-wide lg:text-xl xl:text-2xl text-navy font-sans text-left lg:pl-2 xl:pl-6 mt-4">Punctuator</div>
-                        <div class = "lg:text-normal lg:text-base lg:tracking-wider md:text-black opacity-80 font-serif text-left lg:pl-2 lg:pr-2 xl:pl-6 xl:pr-6 lg:leading-6">Add punctuations to transcript using a bidirectional recurrent neural network model with attention mechanism. Comming Soon!</div>
-                        <div class = "grid sm:grid-cols-4 sm:mr-5 py-4">
-                            <p>&nbsp;</p>
-                            <Link to={{pathname:`/Formatter`}} class = "col-start-5 absolute right-4 bottom-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="transform hover:scale-125 h-11 w-11" fill="none" viewBox="0 0 24 24" stroke="green"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                            </Link>
-                        </div>
+                    <div class = "transform hover:scale-105 flex flex-col rounded-2xl ring-5 ring-darkergray ring-offset-8 bg-gradient-to-br from-gray to-faintblue sm:col-start-1 sm:col-end-12 lg:col-start-9 lg:col-end-12">
+                        <div class = "xl:tracking-wide lg:text-xl xl:text-2xl text-navy font-sans text-left pl-2 sm:pl-2 lg:pl-2 xl:pl-6 mt-3 sm:mt-4">Punctuator</div>
+                        <div class = "mt-1.5 mb-4 sm:mt-2 sm:mb-5 lg:text-normal lg:text-base lg:tracking-wider md:text-black opacity-80 font-serif text-left pl-2 pr-2 sm:pl-2 sm:pr-2 lg:pl-2 lg:pr-2 xl:pl-6 xl:pr-6 lg:leading-6">Add punctuations to transcript using a bidirectional recurrent neural network model with attention mechanism. Comming Soon!</div>
                     </div>
      
                 </div>
@@ -189,7 +181,6 @@ export class IntroBar extends Component {
         )
     }
 }
-
 export const OptionBar = () => {
     return(
         <div class = "w-3/4 flex justify-center items-center absolute top-80 md:top-80">
@@ -204,7 +195,6 @@ export const OptionBar = () => {
                         &nbsp;
                     </div>
                 </div>
-
                 <div class="w-full">
                     <div class = "shadow-2xl bg-gray md:text-normal md:text-2xl md:text-navy font-sans text-left break-all lg:pl-10 lg:pt-8 md:pb-3 md:pl-5 md:pt-4">Transcript <br/> Generator</div>
                     <div class = "box-content md:h-40 bg-gray md:text-normal md:text-base md:text-black font-sans text-left lg:pl-10 lg:pr-10 md:pl-5 md:pr-5"><span class="opacity-60">Get formatted youtube video transcripts on the fly!</span></div>
@@ -215,7 +205,6 @@ export const OptionBar = () => {
                         &nbsp;
                     </div>
                 </div>
-
                 <div class="w-full">
                     <div class = "shadow-2xl bg-gray md:text-normal md:text-2xl md:text-navy font-sans text-left break-all lg:pl-10 lg:pt-8 md:pb-3 md:pl-5 md:pt-4">Not <br/> Sure?</div>
                     <div class = "box-content md:h-40 bg-gray md:text-normal md:text-base md:text-black font-sans text-left lg:pl-10 lg:pr-10 md:pl-5 md:pr-5"><span class="opacity-60">Answers to all of your questions about YT Transcript.</span></div>
@@ -340,7 +329,7 @@ export class LinkBar extends Component {
 
 
         return(
-            <div class = "w-full h-full flex justify-center items-center bg-gray py-8">
+            <div class = "w-full h-full flex justify-center bg-white items-center">
                 <div class="w-6/7 md:w-1/2 flex flex-col">
                     <h1 class = "flex text-navy md:pt-4 md:text-5xl font-sans">Formatter</h1>
                     <div class = "w-full grid md:grid-cols-12 flex md:pt-10">
@@ -515,18 +504,16 @@ export class PopField extends Component {
     }
 }
 
-export const Donate = () => {
+/*export const Donate = () => {
     return(
         <div class = "animate-bounce right-4 top-2/3 fixed">
-            <a href="https://www.paypal.com/donate?business=MUWKCB7DD7VU4&no_recurring=0&item_name=Support+us+in+keeping+our+services+up%21&currency_code=USD" target="_blank" rel="noopener noreferrer" class="focus:outline-none">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 hover:opacity-70" fill="none" viewBox="0 0 24 24" stroke="#ffc824">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <h1 class="text-brightorange tracking-wide font-bold">Donate</h1>
-            </a>     
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
+            </svg>
+                         
         </div>
     )
-}
+}*/
 
 export class ContactBar extends Component {
 
@@ -593,7 +580,7 @@ export class ContactBar extends Component {
 }
 
 
-export const CopyRight = () => {
+/*export const CopyRight = () => {
     return(
         <div class = "right-4 bottom-2.5 fixed">
             <p class="text-darkgreen opacity-85 text-xs font-sans font-normal tracking-tight">
@@ -601,4 +588,4 @@ export const CopyRight = () => {
             </p>                
         </div>
     )
-}
+}*/

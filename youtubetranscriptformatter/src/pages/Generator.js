@@ -1,5 +1,5 @@
 import React from 'react';
-import {NavBar, IntroBar, Donate, CopyRight} from '../layouts'
+import {NavBar, IntroBar} from '../layouts'
 
 const data = {
     title: "Transcript Generator",
@@ -12,8 +12,8 @@ function Generator() {
         <div class="w-full grid grid-rows flex justify-center items-center">
             <NavBar />
             <IntroBar title={data.title} info={data.info} />
-            <CopyRight />
-            <Donate />
+            
+            
         </div>
     );
 }

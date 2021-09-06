@@ -1,5 +1,5 @@
 import React from 'react';
-import {NavBar, ContactBar, CopyRight, Donate} from '../layouts'
+import {NavBar, ContactBar} from '../layouts'
 
 
 function Generator() {
@@ -7,8 +7,7 @@ function Generator() {
         <div class="w-full grid grid-rows flex justify-center items-center">
             <NavBar />
             <ContactBar />
-            <CopyRight />
-            <Donate />
+            
             <div class="w-full h-full bg-gray fixed -z-10">
                 &nbsp;
             </div>
