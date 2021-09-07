@@ -118,18 +118,22 @@ export class OptionBar extends Component {
             <div class = "w-full flex flex-col justify-center items-center mb-6">
                 <div class="pb-11 sm:pb-0 space-y-11 sm:space-y-11 lg:space-y-0 w-10/12 sm:w-3/4 h-auto grid lg:grid-rows-1 gap-2 -mt-16 sm:-mt-20 lg:-mt-9 px-3 sm:px-3 lg:w-4/7 sm:grid-cols-11">
                     <div class = "transform hover:scale-105 flex flex-col rounded-2xl ring-5 ring-darkergray ring-offset-8 bg-gradient-to-br from-gray to-faintblue sm:col-start-1 sm:col-end-12 lg:col-start-1 lg:col-end-4">
+                        <Link to="/Formatter">
                         <div class = "xl:tracking-wide lg:text-xl xl:text-2xl text-navy font-sans text-left pl-2 sm:pl-2 lg:pl-2 xl:pl-6 mt-3 sm:mt-4">Formatter</div>
-                        <div class = "mt-1.5 mb-4 sm:mt-2 sm:mb-5 lg:text-normal lg:text-base lg:tracking-wider md:text-black opacity-80 font-serif text-left pl-2 pr-2 sm:pl-2 sm:pr-2 lg:pl-2 lg:pr-2 xl:pl-6 xl:pr-6 lg:leading-6">Extract and format videos' automatically captioned transcripts using modern web scraping technology and advanced algorithms.</div>
+                        <div class = "mt-1.5 mb-4 sm:mt-2 sm:mb-5 lg:text-normal lg:text-base lg:tracking-wider md:text-black opacity-80 font-serif text-left pl-2 pr-2 sm:pl-2 sm:pr-2 lg:pl-2 lg:pr-2 xl:pl-6 xl:pr-6 lg:leading-6">Extract and format videos' automatically captioned transcripts.</div>
+                        </Link>
                     </div>
 
                     <div class = "transform hover:scale-105 flex flex-col rounded-2xl ring-5 ring-darkergray ring-offset-8 bg-gradient-to-br from-gray to-faintblue sm:col-start-1 sm:col-end-12 lg:col-start-5 lg:col-end-8">
+                        <Link to="/Generator">
                         <div class = "xl:tracking-wide lg:text-xl xl:text-2xl text-navy font-sans text-left pl-2 sm:pl-2 lg:pl-2 xl:pl-6 mt-3 sm:mt-4">Generator</div>
-                        <div class = "mt-1.5 mb-4 sm:mt-2 sm:mb-5 lg:text-normal lg:text-base lg:tracking-wider md:text-black opacity-80 font-serif text-left pl-2 pr-2 sm:pl-2 sm:pr-2 lg:pl-2 lg:pr-2 xl:pl-6 xl:pr-6 lg:leading-6">Generate transcripts of videos or audios using a progressive speech recognition algorithm trained by machine learning technology.</div>
+                        <div class = "mt-1.5 mb-4 sm:mt-2 sm:mb-5 lg:text-normal lg:text-base lg:tracking-wider md:text-black opacity-80 font-serif text-left pl-2 pr-2 sm:pl-2 sm:pr-2 lg:pl-2 lg:pr-2 xl:pl-6 xl:pr-6 lg:leading-6">Generate transcripts of videos or audios. Coming Soon!</div>
+                        </Link>
                     </div>
 
                     <div class = "transform hover:scale-105 flex flex-col rounded-2xl ring-5 ring-darkergray ring-offset-8 bg-gradient-to-br from-gray to-faintblue sm:col-start-1 sm:col-end-12 lg:col-start-9 lg:col-end-12">
                         <div class = "xl:tracking-wide lg:text-xl xl:text-2xl text-navy font-sans text-left pl-2 sm:pl-2 lg:pl-2 xl:pl-6 mt-3 sm:mt-4">Punctuator</div>
-                        <div class = "mt-1.5 mb-4 sm:mt-2 sm:mb-5 lg:text-normal lg:text-base lg:tracking-wider md:text-black opacity-80 font-serif text-left pl-2 pr-2 sm:pl-2 sm:pr-2 lg:pl-2 lg:pr-2 xl:pl-6 xl:pr-6 lg:leading-6">Add punctuations to transcript using a bidirectional recurrent neural network model with attention mechanism. Comming Soon!</div>
+                        <div class = "mt-1.5 mb-4 sm:mt-2 sm:mb-5 lg:text-normal lg:text-base lg:tracking-wider md:text-black opacity-80 font-serif text-left pl-2 pr-2 sm:pl-2 sm:pr-2 lg:pl-2 lg:pr-2 xl:pl-6 xl:pr-6 lg:leading-6">Add punctuations to transcript. Comming Soon!</div>
                     </div>
      
                 </div>
