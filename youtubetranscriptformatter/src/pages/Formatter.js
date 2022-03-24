@@ -15,8 +15,6 @@ export class Formatter extends Component {
             <div class="w-full h-full bg-gray grid grid-rows flex justify-center items-center">
                 <NavBar/>
                 <LinkBar urlParam={this.state.vUrl !== undefined ? this.state.vUrl : ''}/>
-                
-                
             </div>
         )
     }

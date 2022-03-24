@@ -89,6 +89,18 @@ export class IntroBar extends Component {
     }
 
     render() {
+
+        let dataHandler = (e) => {
+            e.preventDefault();
+        }
+
+        let pageHandler = (e) => {
+            if(e.code === "Enter") {
+                let redirect = document.getElementById("redirectPage");
+                redirect.click();
+            }
+        }
+
         return(            
             <div class="w-full bg-navy flex justify-center z-0 items-center">
                 <div class = "font-sans flex flex-col w-10/12 sm:w-3/4 lg:w-4/7">       
@@ -96,10 +108,10 @@ export class IntroBar extends Component {
                     <p class = "text-sm pl-1 sm:pl-1.5 text-white pt-5 sm:pt-7 lg:pb-5 lg:pt-7 lg:text-base font-normal leading-loose sm:leading-loose lg:leading-loose sm:tracking-wider">Welcome to the most efficient and latest YouTube transcript generator! With just a few clicks, we hope to provide <span class = "text-orange sm:text-xl font-semibold">formatted</span>, <span class = "text-orange sm:text-xl font-semibold">punctuated</span>, and <span class ="text-orange sm:text-xl font-semibold">free</span> transcripts for all languages!</p>
                     <div class = "pb-28 pt-7 pl-0.5 pr-0.5 sm:pt-10 grid grid-cols-11 sm:pb-16 flex sm:pl-0.5 sm:pr-0.5 lg:pt-3 sm:pb-36 lg:pb-24 lg:grid-cols-11">
                         <div class="grid col-start-1 col-end-1 flex items-center justify-center sm:grid-cols-3 border-navy bg-white border-l-2 border-b-2 border-t-2 rounded-l-full lg:col-start-1 lg:col-end-1 py-1.5 sm:py-2 lg:py-2.5"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 sm:w-5 col-start-2 col-end-3" fill="none" viewBox="0 0 24 24" stroke="gray"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg></div>
-                        <form class="col-start-2 col-end-10 sm:col-end-11 border-navy border-b-2 border-t-2 bg-white pl-2 lg:pl-2 lg:col-start-2 md:col-end-11 pt-0.75 sm:pt-1.5 lg:pt-2 lg:pb-1.5">
-                            <input placeholder="Enter a Youtube url to start" onChange={this.getUrl} value={this.state.url} class = "text-sm sm:text-md lg:text-base w-full outline-none bg-white text-lightnavy font-sans text-left"></input>
+                        <form class="col-start-2 col-end-10 sm:col-end-11 border-navy border-b-2 border-t-2 bg-white pl-2 lg:pl-2 lg:col-start-2 md:col-end-11 pt-0.75 sm:pt-1.5 lg:pt-2 lg:pb-1.5" onSubmit={dataHandler}>
+                            <input placeholder="Enter a Youtube url to start" onChange={this.getUrl} value={this.state.url} onKeyPress={pageHandler} class = "text-sm sm:text-md lg:text-base w-full outline-none bg-white text-lightnavy font-sans text-left"></input>
                         </form>                  
-                        <Link to={{pathname:`/Formatter/`, search: `?v=${encodeURIComponent(this.state.url)}`}} class="grid border-navy bg-green col-start-10 col-end-12 sm:col-start-11 sm:col-end-12 lg:col-start-11 lg:col-end-12 flex items-center justify-center border-b-2 border-t-2 border-r-2 rounded-r-full text-white focus:outline-none">
+                        <Link to={{pathname:`/Formatter/`, search: `?v=${encodeURIComponent(this.state.url)}`}} id="redirectPage" class="grid border-navy bg-green col-start-10 col-end-12 sm:col-start-11 sm:col-end-12 lg:col-start-11 lg:col-end-12 flex items-center justify-center border-b-2 border-t-2 border-r-2 rounded-r-full text-white focus:outline-none">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 " fill="none" viewBox="0 0 24 24" stroke="white"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                         </Link>
                     </div>                               
@@ -283,17 +295,15 @@ export class LinkBar extends Component {
     }
 
     getData = async (langCode) => {
-        //https://warm-inlet-51238.herokuapp.com
-        //https://www.youtube.com/watch?v=0i_XWYKfIdY
         if(this.state.url !== undefined && this.state.url.includes('www.youtube.com/watch?v=')) {
             try {
                 let res = await axios.get(`https://warm-inlet-51238.herokuapp.com/scrape?v=${this.state.url}&code=${langCode == null ? langCode : this.state.langCode}&timeStart=${this.state.timeMinStart + ":" + this.state.timeSecStart}&timeEnd=${this.state.timeMinEnd + ":" + this.state.timeSecEnd}`)
                 
                 this.setState({script: res.data.script, options: res.data.langCodes, timeScript: res.data.timeScript})
-                console.log(res.data.script, res.data.langCodes)
+                //console.log(res.data.script, res.data.langCodes)
                 
             } catch (error) {
-                console.log(error)
+                //console.log(error)
                 this.setState({script: "Failed to get script", options: [], timeScript: ''})
             }
 
@@ -331,13 +341,17 @@ export class LinkBar extends Component {
     
     render() {
 
+        let dataHandler = (e) => {
+            e.preventDefault();
+            this.getData(this.state.langCode);
+        }
 
         return(
             <div class = "w-full h-full flex justify-center bg-white items-center">
                 <div class="w-6/7 md:w-1/2 flex flex-col">
                     <h1 class = "flex text-navy md:pt-4 md:text-5xl font-sans">Formatter</h1>
                     <div class = "w-full grid md:grid-cols-12 flex md:pt-10">
-                        <form class="border-navy border-l-2 border-b-2 border-t-2 w-full bg-white rounded-l md:pl-2 md:col-start-1 md:col-end-10 md:py-1.5">
+                        <form class="border-navy border-l-2 border-b-2 border-t-2 w-full bg-white rounded-l md:pl-2 md:col-start-1 md:col-end-10 md:py-1.5" onSubmit={dataHandler}>
                             <input placeholder="Enter Youtube url to start" onChange={this.getUrl} value={this.state.url} class = "w-full outline-none bg-white text-lightnavy font-sans text-left"></input>
                         </form>                    
                         <div class = "border-navy border-r-2 border-t-2 border-b-2 rounded-r w-full grid md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 2xl:grid-cols-9 w-full bg-white  md:col-start-10 md:col-end-13 md:py-1.5">
