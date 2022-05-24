@@ -44,35 +44,6 @@ export class NavBar extends Component {
                     </div>                    
                 </div>
             </div>
-            
-
-            /*<div class="w-full bg-white flex justify-center font-sans">
-                <div class="w-11/12 flex grid grid-cols-6 py-1">
-                    <div class="inline-flex md:items-center space-x-3 whitespace-nowrap text-base col-start-0">
-                        <img src={logo} alt="bwdl" class="w-10 h-8"/>
-                        <h1>YT Transcript <span>MSTR</span></h1>
-                    </div>
-                    <div class="col-start-6 md:hidden">
-                        <button onClick={this.showMenu} class="float-right focus:outline-none">
-                            <img src="https://img.icons8.com/material-outlined/24/000000/menu--v3.png" alt="mnu"/>
-                        </button>
-                        {
-                            !this.state.status ? null : 
-                            <div class="pt-6 mr-4 flex flex-col">
-                                <Link to="/" class = "text-red md:hover:underline">Home</Link>                
-                                <Link to="/Formatter" class = "text-navy md:hover:underline">Formatter</Link>
-                                <Link to="/Generator" class = "text-navy md:hover:underline">Generator</Link>
-                            </div> 
-                        }
-                    </div>
-                    <div class="hidden md:flex py-6 space-x-6 font-medium text-base col-start-9 col-end-12">
-                        <Link to="/" class = "text-red md:hover:underline">Home</Link>                
-                        <Link to="/Formatter" class = "text-navy md:hover:underline">Formatter</Link>
-                        <Link to="/Generator" class = "text-navy md:hover:underline">Generator</Link>
-                    </div>
-                    
-                </div>
-            </div>*/
         )
     }
 }
@@ -121,9 +92,6 @@ export class IntroBar extends Component {
     }
 }
 
-// xl:tracking-wide lg:text-xl xl:text-2xl text-navy font-sans text-left lg:pl-2 xl:pl-6 mt-4
-// lg:text-normal lg:text-base lg:tracking-wider md:text-black opacity-80 font-serif text-left lg:pl-2 lg:pr-2 xl:pl-6 xl:pr-6 lg:leading-10
-
 export class OptionBar extends Component {
     render() {
         return(
@@ -153,89 +121,6 @@ export class OptionBar extends Component {
         )
     }
 }
-
-
-/*
-<div class = "mt-6 transform hover:scale-105 rounded-2xl ring-5 ring-darkergray ring-offset-8 bg-gradient-to-br from-gray to-faintblue sm:mt-0 sm:col-start-5 sm:col-end-8">
-                        <div class = "xl:tracking-wide lg:text-xl xl:text-2xl text-navy font-sans text-left lg:pl-2 xl:pl-6 mt-4">Generator</div>
-                        <div class = "sm:pt-2.5 lg:text-normal lg:text-base lg:tracking-wider md:text-black opacity-80 font-serif text-left lg:pl-2 lg:pr-2 xl:pl-6 xl:pr-6 lg:leading-10">Generate transcripts of videos or audios using a progressive speech recognition algorithm trained by machine learning technology.</div>
-                        <div class = "grid sm:grid-cols-4 sm:mr-5 sm:mb-3.5">
-                            <Link to="/Generator" class = "col-start-5">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="transform hover:scale-125 h-11 w-11" fill="none" viewBox="0 0 24 24" stroke="green"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                            </Link>
-                        </div>
-                    </div>
-                    <div class = "mt-6 transform hover:scale-105 rounded-2xl ring-5 ring-darkergray ring-offset-8 bg-gradient-to-br from-gray to-faintblue sm:mt-0 sm:col-start-9 sm:col-end-12">
-                        <div class = "xl:tracking-wide lg:text-xl xl:text-2xl text-navy font-sans text-left lg:pl-2 xl:pl-6 mt-4">Punctuator</div>
-                        <div class = "sm:pt-2.5 lg:text-normal lg:text-base lg:tracking-wider md:text-black opacity-80 font-serif text-left lg:pl-2 lg:pr-2 xl:pl-6 xl:pr-6 lg:leading-10">Add punctuations to transcript using a bidirectional recurrent neural network model with attention mechanism</div>
-                        <div class = "grid sm:grid-cols-4 sm:mr-5 sm:mb-3.5">
-                            <Link to="/Formatter" class = "col-start-5">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="transform hover:scale-125 h-11 w-11" fill="none" viewBox="0 0 24 24" stroke="green"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                            </Link>
-                        </div>
-                    </div>
-*/
-
-
-/*
-export class IntroBar extends Component {
-    render(props) {
-        console.log(this.props.tool)
-        return(
-            
-            <div class="w-full bg-navy shadow-2xl flex flex-col justify-center -z-20 items-center">
-            <div class = "w-3/4 font-sans flex flex-col">       
-                <h1 class = "text-white md:pt-14 md:text-6xl">{this.props.title}</h1>
-                <p class = "text-white md:pb-44 md:pt-5 md:text-base font-normal md:leading-loose">{this.props.info}</p>
-                
-            </div>
-            {typeof this.props.tool !== 'undefined' ?
-            this.props.tool
-            :null
-            }
-            </div>
-        )
-    }
-}
-export const OptionBar = () => {
-    return(
-        <div class = "w-3/4 flex justify-center items-center absolute top-80 md:top-80">
-            <div class="w-full grid grid-row-3 gap-4 lg:grid-cols-3 xl:gap-x-14 lg:gap-y-0 lg:h-full">
-                <div class="w-full">
-                    <div class = "shadow-2xl bg-gray md:text-normal md:text-2xl md:text-navy font-sans text-left break-all lg:pl-10 lg:pt-8 md:pb-3 md:pl-5 md:pt-4">Transcript <br/> Formatter</div>
-                    <div class = "box-content md:h-40 bg-gray md:text-normal md:text-base md:text-black font-sans text-left lg:pl-10 lg:pr-10 md:pl-5 md:pr-5"><span class="opacity-60">Retrieve formatted youtube video transcripts from non and auto caption tracks.</span></div>
-                    <div class = "md:h-16 bg-gray grid md:grid-cols-7 md:grid-rows-3 text-center">
-                        <Link to="/Formatter" class = "shadow-inner pt-2.5 bg-green text-white font-semibold md:row-start-1 md:row-span-2 md:col-start-5 md:col-span-2 rounded-full hover:bg-darkgreen">Go</Link>
-                    </div>
-                    <div class="shadow-2xl absolute w-3/10 left-4 top-4 h-full -z-10 bg-darkgray">
-                        &nbsp;
-                    </div>
-                </div>
-                <div class="w-full">
-                    <div class = "shadow-2xl bg-gray md:text-normal md:text-2xl md:text-navy font-sans text-left break-all lg:pl-10 lg:pt-8 md:pb-3 md:pl-5 md:pt-4">Transcript <br/> Generator</div>
-                    <div class = "box-content md:h-40 bg-gray md:text-normal md:text-base md:text-black font-sans text-left lg:pl-10 lg:pr-10 md:pl-5 md:pr-5"><span class="opacity-60">Get formatted youtube video transcripts on the fly!</span></div>
-                    <div class = "md:h-16 bg-gray grid md:grid-cols-7 md:grid-rows-3 text-center">
-                        <Link to="/Generator" class = "shadow-inner pt-2.5 bg-green text-white font-semibold md:row-start-1 md:row-span-2 md:col-start-5 md:col-span-2 rounded-full hover:bg-darkgreen">Go</Link>
-                    </div>
-                    <div class="shadow-2xl absolute w-3/10 left-3/10 ml-4 top-4 h-full -z-10 bg-darkgray">
-                        &nbsp;
-                    </div>
-                </div>
-                <div class="w-full">
-                    <div class = "shadow-2xl bg-gray md:text-normal md:text-2xl md:text-navy font-sans text-left break-all lg:pl-10 lg:pt-8 md:pb-3 md:pl-5 md:pt-4">Not <br/> Sure?</div>
-                    <div class = "box-content md:h-40 bg-gray md:text-normal md:text-base md:text-black font-sans text-left lg:pl-10 lg:pr-10 md:pl-5 md:pr-5"><span class="opacity-60">Answers to all of your questions about YT Transcript.</span></div>
-                    <div class = "md:h-16 bg-gray grid md:grid-cols-7 md:grid-rows-3 text-center">
-                        <Link to="/NotSure" class = "shadow-inner pt-2.5 bg-green text-white font-semibold md:row-start-1 md:row-span-2 md:col-start-5 md:col-span-2 rounded-full hover:bg-darkgreen">Go</Link>
-                    </div>
-                    <div class="shadow-2xl absolute w-3/10 left-3/5 ml-4 top-4 h-full -z-10 bg-darkgray">
-                        &nbsp;
-                    </div>
-                </div>
-            </div>                                            
-        </div>
-    )
-}
-*/
 
 export class LinkBar extends Component {
 
@@ -522,25 +407,10 @@ export class PopField extends Component {
     }
 }
 
-/*export const Donate = () => {
-    return(
-        <div class = "animate-bounce right-4 top-2/3 fixed">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
-            </svg>
-                         
-        </div>
-    )
-}*/
-
 export class ContactBar extends Component {
-
-
     render() {
-
         function sendEmail(e) {
             e.preventDefault();
-        
             emailjs.sendForm('service_2xe76ee', 'template_13o76vt', e.target, 'user_BX1qZ60jG2ZkkJfk6omb0')
               .then((result) => {
                   console.log(result.text);
@@ -596,14 +466,3 @@ export class ContactBar extends Component {
         )
     }
 }
-
-
-/*export const CopyRight = () => {
-    return(
-        <div class = "right-4 bottom-2.5 fixed">
-            <p class="text-darkgreen opacity-85 text-xs font-sans font-normal tracking-tight">
-                &#169; 2021 by RW & DL - All Rights Reserved.
-            </p>                
-        </div>
-    )
-}*/
