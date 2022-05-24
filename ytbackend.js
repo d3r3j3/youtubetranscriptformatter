@@ -1,6 +1,5 @@
 const express = require('express')
 const fetch = require('node-fetch')
-//const axios = require('axios')
 const jsdom = require('jsdom')
 const cors = require('cors')
 const app = express()
@@ -42,6 +41,7 @@ let getReq = async (url, lang, time) => {
             } else {
                 console.log("Non/Auto Generated Captiontrack Not Found")
                 return {url: "nope", langCodes: [], time: time}
+                // Audio data scrape test
                 /*let j = formattedData.search("mimeType")
                 if(j > -1) {
                     let splitData = formattedData.split('"streamingData":')
@@ -75,6 +75,7 @@ let getReq = async (url, lang, time) => {
     }
 }
 
+// Audio to text with assemblyai test
 /*
 let fetchAudioStream = async (url) => {
     try {
@@ -192,7 +193,7 @@ let timeConversion = (secs) => {
 }
 
 let timeStrConversion = (timeStr) => {
-    // timeStr = "05:21"
+    // Example: timeStr = "05:21"
     if(timeStr.search(':') < 0) {
         console.log("Invalid time please insert colon between minutes and seconds")
     } else {
